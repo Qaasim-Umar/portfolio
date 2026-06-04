@@ -66,7 +66,6 @@ export interface Profile {
   readonly location: string;
   readonly available: string;
   readonly email: string;
-  readonly phone: string;
   /** Drop your résumé at `public/resume.pdf` to enable the download button. */
   readonly resumeUrl: string;
   /** Hero headline lines — rendered with the accent word emphasised. */
@@ -201,7 +200,6 @@ export const profile: Profile = {
   location: "Nigeria · building for everywhere",
   available: "Open to senior mobile roles",
   email: "qaasim405@gmail.com",
-  phone: "+2348169092228",
   resumeUrl: "/resume.pdf",
   headline: ["I build mobile apps", "that ship to millions", "and answer to no server."],
   tagline:
@@ -225,8 +223,6 @@ export const heroTerminal: readonly TerminalLine[] = [
 /*  Social / contact links                                                     */
 /* -------------------------------------------------------------------------- */
 
-// NOTE: GitHub & LinkedIn URLs are best-guess placeholders derived from the
-// email handle — confirm/replace them with the real profile URLs.
 export const socials: readonly SocialLink[] = [
   {
     name: "github",
@@ -255,13 +251,6 @@ export const socials: readonly SocialLink[] = [
     href: "mailto:qaasim405@gmail.com",
     handle: "qaasim405@gmail.com",
     icon: "mail",
-  },
-  {
-    name: "phone",
-    label: "Phone",
-    href: "tel:+2348169092228",
-    handle: "+234 816 909 2228",
-    icon: "phone",
   },
 ];
 

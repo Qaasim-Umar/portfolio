@@ -39,9 +39,9 @@ site. Edit the exported objects to change anything:
 
 | Export | Controls |
 | --- | --- |
-| `profile` | Name, role, hero headline, tagline, bio, email, phone, résumé path |
+| `profile` | Name, role, hero headline, tagline, bio, email, résumé path |
 | `heroTerminal` | The faux shell output in the hero panel |
-| `socials` | GitHub / LinkedIn / email / phone links |
+| `socials` | GitHub / X / LinkedIn / email links |
 | `stats` | The “1M+ users” stat strip |
 | `experience` | The timeline entries |
 | `education` | The education card |
@@ -55,15 +55,12 @@ site. Edit the exported objects to change anything:
 Types are exported alongside the data, so your editor will tell you if a field
 is missing or mistyped.
 
-### ⚠️ Placeholders to confirm
+### Links
 
-A few links are best-guess placeholders (the résumé PDF doesn’t embed plain-text
-URLs). Update these in `src/lib/content.ts`:
-
-- `socials` → **GitHub** and **LinkedIn** URLs (currently guessed from the email handle)
-- `projects` → **Play Store / repo** URLs for `nahdi`, `white-noise`, `kitaabul-adhkaar`
-- Drop your résumé at **`public/resume.pdf`** to make the “Résumé” buttons work
-  (or change `profile.resumeUrl`).
+Social and project links live in `socials` and `projects` in
+`src/lib/content.ts`. The `kitaabul-adhkaar` project still points at a generic
+Play Store URL — update it if it has a dedicated listing. The résumé is served
+from `public/resume.pdf` (change `profile.resumeUrl` to point elsewhere).
 
 ---
 
