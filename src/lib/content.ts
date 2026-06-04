@@ -76,6 +76,16 @@ export interface Profile {
   readonly bio: readonly string[];
 }
 
+export interface PortraitInfo {
+  /** Path under /public, e.g. "/qaasim.jpg". */
+  readonly src: string;
+  readonly alt: string;
+  /** Mono window title shown in the frame chrome, e.g. "~/qaasim.jpg". */
+  readonly title: string;
+  /** Optional mono caption shown beneath the photo. */
+  readonly caption?: string;
+}
+
 export interface ExperienceItem {
   readonly id: string;
   readonly role: string;
@@ -181,7 +191,6 @@ export const site: SiteConfig = {
     "Rust",
     "Riverpod",
     "Clean Architecture",
-    "Nigeria",
   ],
   locale: "en_US",
   ogImageAlt: "Muhammad Qaasim · Senior Mobile Software Engineer (Flutter)",
@@ -197,7 +206,7 @@ export const profile: Profile = {
   lastName: "Qaasim",
   role: "Senior Mobile Software Engineer (Flutter)",
   roleShort: "Senior Flutter Engineer",
-  location: "Nigeria · building for everywhere",
+  location: "Building for everywhere",
   available: "Open to senior mobile roles",
   email: "qaasim405@gmail.com",
   resumeUrl: "/resume.pdf",
@@ -209,6 +218,17 @@ export const profile: Profile = {
     "I care about the unglamorous parts: clean architecture, offline-first behaviour, pixel-perfect localisation, and state management that a teammate can read at 2am without crying. Stacked, Riverpod, MVVM, Clean Architecture, I've shipped them all, and I have opinions about when each one earns its keep.",
     "Computer Engineering grad from FUT Minna. Somewhere along the way I led Android communities, ran bootcamps that grew a campus dev scene from almost nothing to 300+, and never quite kicked the open-source habit.",
   ],
+};
+
+/**
+ * About-section portrait. Save the image at `public/qaasim.jpg` to show it —
+ * the slot stays hidden until that file exists, so nothing breaks meanwhile.
+ */
+export const portrait: PortraitInfo = {
+  src: "/qaasim.jpg",
+  alt: "Muhammad Qaasim, smiling, at the Africa Bitcoin Conference",
+  title: "~/qaasim.jpg",
+  caption: "// Africa Bitcoin Conference — talking NOSTR, mostly",
 };
 
 /** Faux shell output rendered in the hero's terminal panel. */
