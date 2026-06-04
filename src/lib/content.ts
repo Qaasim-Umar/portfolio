@@ -169,7 +169,7 @@ export interface SiteConfig {
 
 export const site: SiteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://quwaysim.vercel.app",
-  title: "Muhammad Qaasim — Senior Mobile Software Engineer (Flutter)",
+  title: "Muhammad Qaasim · Senior Mobile Software Engineer (Flutter)",
   description:
     "Senior mobile software engineer specialising in Flutter. I build pixel-perfect apps for 1M+ users and decentralized, privacy-first messaging over NOSTR.",
   keywords: [
@@ -184,7 +184,7 @@ export const site: SiteConfig = {
     "Nigeria",
   ],
   locale: "en_US",
-  ogImageAlt: "Muhammad Qaasim — Senior Mobile Software Engineer (Flutter)",
+  ogImageAlt: "Muhammad Qaasim · Senior Mobile Software Engineer (Flutter)",
 };
 
 /* -------------------------------------------------------------------------- */
@@ -203,17 +203,17 @@ export const profile: Profile = {
   resumeUrl: "/resume.pdf",
   headline: ["I build mobile apps", "that ship to millions", "and answer to no server."],
   tagline:
-    "Flutter from pixel to protocol — from a CMS-driven app with 1M+ users to decentralized, privacy-first messaging over NOSTR.",
+    "Flutter from pixel to protocol, from a CMS-driven app with 1M+ users to decentralized, privacy-first messaging over NOSTR.",
   bio: [
-    "I'm a senior mobile engineer who has spent 5+ years turning Flutter into production software people actually keep on their home screen. Most recently I co-built Nahdi — a highly dynamic, localised commerce app serving over a million users — and contributed to White Noise, a decentralized, privacy-first messenger built on NOSTR with a Rust MLS crate doing the cryptographic heavy lifting.",
-    "I care about the unglamorous parts: clean architecture, offline-first behaviour, pixel-perfect localisation, and state management that a teammate can read at 2am without crying. Stacked, Riverpod, MVVM, Clean Architecture — I've shipped them all, and I have opinions about when each one earns its keep.",
+    "I'm a senior mobile engineer who has spent 5+ years turning Flutter into production software people actually keep on their home screen. Most recently I co-built Nahdi, a highly dynamic, localised commerce app serving over a million users, and contributed to White Noise, a decentralized, privacy-first messenger built on NOSTR with a Rust MLS crate doing the cryptographic heavy lifting.",
+    "I care about the unglamorous parts: clean architecture, offline-first behaviour, pixel-perfect localisation, and state management that a teammate can read at 2am without crying. Stacked, Riverpod, MVVM, Clean Architecture, I've shipped them all, and I have opinions about when each one earns its keep.",
     "Computer Engineering grad from FUT Minna. Somewhere along the way I led Android communities, ran bootcamps that grew a campus dev scene from almost nothing to 300+, and never quite kicked the open-source habit.",
   ],
 };
 
 /** Faux shell output rendered in the hero's terminal panel. */
 export const heroTerminal: readonly TerminalLine[] = [
-  { command: "whoami", output: "muhammad qaasim — senior flutter engineer" },
+  { command: "whoami", output: "muhammad qaasim, senior flutter engineer" },
   { command: "cat stack.txt", output: "flutter · dart · riverpod · rust · nostr" },
   { command: "uptime", output: "5+ yrs shipping mobile · 1M+ users reached" },
   { command: "echo $STATUS", output: "open to senior mobile roles" },
@@ -274,7 +274,7 @@ export const experience: readonly ExperienceItem[] = [
     id: "ipf",
     role: "Software Engineer",
     org: "Internet Privacy Foundation",
-    period: "May 2025 — Dec 2025",
+    period: "May 2025 - Dec 2025",
     summary:
       "Contributed to White Noise (Marmot Protocol): a decentralized, privacy-first messenger in Flutter/Dart, integrating a Rust MLS crate for end-to-end group messaging over NOSTR.",
     tags: ["Flutter", "Dart", "Rust", "NOSTR", "MLS", "E2E"],
@@ -283,7 +283,7 @@ export const experience: readonly ExperienceItem[] = [
     id: "featuremind",
     role: "Software Engineer",
     org: "Feature/mind",
-    period: "Dec 2023 — Jul 2025",
+    period: "Dec 2023 - Jul 2025",
     summary:
       "Co-built Nahdi, a pixel-perfect, fully localised commerce app serving 1M+ users. Contentful CMS, Algolia search, Dynamic Yield personalisation, Hive storage, Riverpod + Clean Architecture.",
     tags: ["Flutter", "Riverpod", "Clean Architecture", "Contentful", "Algolia", "Hive"],
@@ -292,9 +292,9 @@ export const experience: readonly ExperienceItem[] = [
     id: "oss",
     role: "Open Source Contributor",
     org: "Marmot Protocol & friends",
-    period: "May 2025 — Present",
+    period: "May 2025 - Present",
     summary:
-      "Ongoing contributions to open, privacy-respecting software — most notably the Marmot Protocol / White Noise ecosystem.",
+      "Ongoing contributions to open, privacy-respecting software, most notably the Marmot Protocol / White Noise ecosystem.",
     tags: ["Open Source", "NOSTR"],
     current: true,
   },
@@ -302,16 +302,16 @@ export const experience: readonly ExperienceItem[] = [
     id: "hoteltravel",
     role: "Flutter Developer",
     org: "Hotel Travel Inc",
-    period: "Mar 2022 — Dec 2023",
+    period: "Mar 2022 - Dec 2023",
     summary:
-      "Built multi-form-factor, offline-first Flutter products including Cash Register by Timbu — accurate transactions, payments, and professional receipts. SQLite, Stacked, MVVM.",
+      "Built multi-form-factor, offline-first Flutter products including Cash Register by Timbu, accurate transactions, payments, and professional receipts. SQLite, Stacked, MVVM.",
     tags: ["Flutter", "SQLite", "Stacked", "MVVM", "Offline-first"],
   },
   {
     id: "zurichat-oss",
     role: "Open-code Contributor",
     org: "Zuri Chat",
-    period: "Dec 2022 — Dec 2023",
+    period: "Dec 2022 - Dec 2023",
     summary:
       "Continued contributing to the Zuri Chat mobile codebase alongside the WorkshopApps community after the internship wrapped.",
     tags: ["Flutter", "Open Source"],
@@ -320,7 +320,7 @@ export const experience: readonly ExperienceItem[] = [
     id: "hng",
     role: "Software Engineer · HNGi8",
     org: "Zuri Chat",
-    period: "Aug 2021 — Oct 2021",
+    period: "Aug 2021 - Oct 2021",
     summary:
       "Flutter Developer Track Finalist at the HNGi8 remote internship. Repo maintainer during the program and Flutter mobile team lead post-internship. Stacked + MVVM.",
     tags: ["Flutter", "Stacked", "MVVM", "Team Lead"],
@@ -329,16 +329,16 @@ export const experience: readonly ExperienceItem[] = [
     id: "alhikmah",
     role: "IT Support Intern",
     org: "Al-Hikmah University Ilorin · ICT Centre",
-    period: "Jun 2021 — Sep 2021",
+    period: "Jun 2021 - Sep 2021",
     summary:
-      "Kept the university's ICT centre running — hardware, networks, and the occasional miracle for a stubborn printer.",
+      "Kept the university's ICT centre running; hardware, networks, and the occasional miracle for a stubborn printer.",
     tags: ["IT Support", "Networking"],
   },
   {
     id: "swep",
     role: "Student Work Experience (SWEP)",
     org: "Federal University of Technology, Minna",
-    period: "Sep 2018 — Oct 2018",
+    period: "Sep 2018 - Oct 2018",
     summary:
       "Where it started: an awarded engineering work placement across multiple departments. Recognised for standout contribution among 400+ students.",
     tags: ["Engineering", "Hardware"],
@@ -370,7 +370,7 @@ export const projects: readonly Project[] = [
     description:
       "Co-built a highly dynamic, pixel-perfect and fully localised application powered by the Contentful CMS. Algolia drives search, Dynamic Yield handles personalisation, Hive backs local storage, and Riverpod + Clean Architecture keep a large surface area maintainable.",
     role: "Team Project · Feature/mind",
-    period: "Dec 2023 — Jun 2025",
+    period: "Dec 2023 - Jun 2025",
     status: "Live · in maintenance",
     featured: true,
     metrics: [
@@ -386,9 +386,9 @@ export const projects: readonly Project[] = [
     name: "White Noise",
     tagline: "Decentralized, privacy-first messaging over NOSTR.",
     description:
-      "Contributed to a powerful, decentralized, privacy-first messaging app powered by Flutter/Dart with a Rust MLS crate integration over NOSTR — end-to-end encrypted group messaging that doesn't trust a central server.",
+      "Contributed to a powerful, decentralized, privacy-first messaging app powered by Flutter/Dart with a Rust MLS crate integration over NOSTR; end-to-end encrypted group messaging that doesn't trust a central server.",
     role: "Open Source · Internet Privacy Foundation",
-    period: "May 2025 — Dec 2025",
+    period: "May 2025 - Dec 2025",
     status: "Marmot Protocol",
     featured: true,
     metrics: [
@@ -419,7 +419,7 @@ export const projects: readonly Project[] = [
     description:
       "Final-year project: a Flutter app to remotely monitor and control a weeding robot, with Firebase as the backend. Built with Stacked + MVVM.",
     role: "Final Year Project",
-    period: "Dec 2022 — Jun 2023",
+    period: "Dec 2022 - Jun 2023",
     featured: false,
     metrics: [],
     stack: ["Flutter", "Firebase", "Stacked", "MVVM", "IoT"],
@@ -432,7 +432,7 @@ export const projects: readonly Project[] = [
     description:
       "A logistics service app that helps users pick up or deliver items to the destination of their choice. Built under contract with Stacked + MVVM.",
     role: "Contract",
-    period: "Dec 2021 — Feb 2022",
+    period: "Dec 2021 - Feb 2022",
     featured: false,
     metrics: [],
     stack: ["Flutter", "Stacked", "MVVM"],
@@ -445,7 +445,7 @@ export const projects: readonly Project[] = [
     description:
       "A modern business communication platform that brings workspace collaboration into a single app. Built with my HNGi8 team in Flutter (Stacked + MVVM). I was a repo maintainer during the internship and the Flutter mobile team lead afterwards.",
     role: "Group Project · HNGi8 Remote Internship",
-    period: "Aug 2021 — Oct 2021",
+    period: "Aug 2021 - Oct 2021",
     featured: false,
     metrics: [],
     stack: ["Flutter", "Stacked", "MVVM"],
@@ -466,7 +466,7 @@ export const projects: readonly Project[] = [
   },
   {
     id: "kitaabul-adhkaar",
-    name: "Kitaabul — Adhkaar",
+    name: "Kitaabul-Adhkaar",
     tagline: "Islamic supplications, beautifully indexed.",
     description:
       "A personal Android app of Islamic supplications built for a school. Quietly beloved on the Play Store with a 4.9★ rating.",
@@ -486,7 +486,7 @@ export const projects: readonly Project[] = [
     name: "RegApp",
     tagline: "Killed a paper ledger. Permanently.",
     description:
-      "An Android app for an annual camping programme's participant registration — it replaced years of paper record-keeping and financial mismanagement, and was fully adopted by the organisers. Java + Firebase.",
+      "An Android app for an annual camping programme's participant registration. It replaced years of paper record-keeping and financial mismanagement, and was fully adopted by the organisers. Java + Firebase.",
     role: "Personal Project",
     period: "Dec 2019",
     featured: false,
@@ -579,7 +579,7 @@ export const leadership: readonly LeadershipItem[] = [
     id: "gdsc",
     role: "Android Lead",
     org: "Google Developer Student Clubs · FUT Minna",
-    period: "2019 — 2021",
+    period: "2019 - 2021",
     description:
       "Core team for the school's first-ever GDSC chapter, two consecutive terms. Led the Android track.",
   },
@@ -587,7 +587,7 @@ export const leadership: readonly LeadershipItem[] = [
     id: "i4g",
     role: "Android Lead",
     org: "Ingressive for Good · FUT Minna",
-    period: "2020 — 2021",
+    period: "2020 - 2021",
     description:
       "Core team for the first-ever I4G chapter on campus, leading Android.",
   },
@@ -621,7 +621,7 @@ export const honours: readonly Honour[] = [
     id: "hng",
     title: "HNGi8 Finalist",
     detail:
-      "One of ~300 finalists from the 12,000 interns who started HNG Internship 8 — Flutter Developer Track.",
+      "One of ~300 finalists from the 12,000 interns who started HNG Internship 8 Flutter Developer Track.",
   },
   {
     id: "swep",
@@ -642,7 +642,7 @@ export const sections = {
     nav: true,
     title: "About",
     prompt: "~/about",
-    intro: "whoami — the short version, before the bullet points kick in.",
+    intro: "whoami, the short version, before the bullet points kick in.",
   },
   work: {
     index: "02",
@@ -658,7 +658,7 @@ export const sections = {
     nav: true,
     title: "Experience",
     prompt: "~/experience",
-    intro: "git log --author=qaasim — reverse chronological, no rebases.",
+    intro: "git log --author=qaasim - reverse chronological, no rebases.",
   },
   projects: {
     index: "04",
@@ -666,7 +666,7 @@ export const sections = {
     nav: true,
     title: "Projects",
     prompt: "~/projects",
-    intro: "The rest of the catalogue — Flutter, a lot of Java, and one robot that hated weeds.",
+    intro: "The rest of the catalogue. Flutter, a lot of Java, and one robot that hated weeds.",
   },
   skills: {
     index: "05",
@@ -698,7 +698,7 @@ export const sections = {
     nav: true,
     title: "Contact",
     prompt: "~/contact --reply-fast",
-    intro: "echo \"hello\" | mail qaasim — I read everything, I reply to most.",
+    intro: "echo \"hello\" | mail qaasim. I read everything, I reply to most.",
   },
 } as const satisfies Record<string, SectionMeta>;
 
