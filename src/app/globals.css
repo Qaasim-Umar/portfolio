@@ -1,26 +1,134 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   THEMING — the single source of truth for colour.
+   Re-brand the whole site by editing the values in :root (light) and
+   .dark (dark). Components never use raw hex — only the semantic tokens
+   exposed through the @theme block below (bg, surface, text, primary, ...).
+   ========================================================================== */
+
+/* Make `dark:` utilities respond to a `.dark` class on <html> (set by the
+   no-flash script in layout.tsx) instead of the OS media query, so a manual
+   toggle can override the system preference. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+
+  /* Surfaces */
+  --color-bg: #f4f2ec; /* warm paper */
+  --color-surface: #fbfaf5;
+  --color-surface-2: #eae6db;
+  --color-border: #dad5c8;
+
+  /* Text */
+  --color-text: #15191a; /* ink */
+  --color-muted: #5a615b;
+
+  /* Brand */
+  --color-primary: #0b6e40; /* deep terminal green (AA on paper) */
+  --color-primary-foreground: #f7fbf8;
+  --color-accent: #97480c; /* burnt amber, used sparingly */
+  --color-ring: #0b6e40;
 }
 
+.dark {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --color-bg: #0b0e0d; /* near-black, faint green cast */
+  --color-surface: #121715;
+  --color-surface-2: #19201d;
+  --color-border: #28312c;
+
+  /* Text */
+  --color-text: #e7edea;
+  --color-muted: #8c9a93;
+
+  /* Brand */
+  --color-primary: #6df0a1; /* bright mint-green */
+  --color-primary-foreground: #06150d;
+  --color-accent: #e9b872; /* warm amber */
+  --color-ring: #6df0a1;
+}
+
+/* Expose the semantic tokens + fonts to Tailwind's utility engine.
+   `inline` keeps the values as var() references so they swap live with .dark. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-surface-2: var(--color-surface-2);
+  --color-border: var(--color-border);
+  --color-text: var(--color-text);
+  --color-muted: var(--color-muted);
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-accent: var(--color-accent);
+  --color-ring: var(--color-ring);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  /* Offset in-page anchors so headings clear the sticky nav. */
+  scroll-padding-top: 5.5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+/* Custom-coloured, adaptive scrollbar. */
+:root {
+  scrollbar-color: var(--color-border) transparent;
+}
+
+/* Visible, on-brand focus ring for keyboard users. */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Honour reduced-motion at the platform level: kill smooth scroll and
+   neutralise any CSS transitions/animations. Framer Motion is handled
+   separately via useReducedMotion(). */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* A faint terminal-style scanline texture for the page background.
+   Decorative only; sits behind everything and is invisible to AT. */
+.bg-grid {
+  background-image: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--color-border) 45%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 100% 2.5rem;
 }
