@@ -3,6 +3,7 @@ import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/motion/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { Tag } from "@/components/ui/Tag";
+import { Portrait } from "@/components/ui/Portrait";
 
 export function About() {
   return (
@@ -21,7 +22,7 @@ export function About() {
         ))}
       </Stagger>
 
-      <div className="mt-12 grid gap-10 lg:grid-cols-[1.5fr_1fr]">
+      <div className="mt-12 grid gap-10 lg:grid-cols-[1.5fr_320px]">
         <Reveal>
           <div className="space-y-5 text-pretty leading-relaxed text-muted">
             {profile.bio.map((paragraph, index) => (
@@ -33,20 +34,24 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="rounded-lg border border-border bg-surface/60 p-6">
-            <p className="font-mono text-sm text-primary">~/education</p>
-            <h3 className="mt-3 font-mono text-lg font-semibold">{education.degree}</h3>
-            <p className="mt-1 text-sm text-muted">{education.school}</p>
-            <p className="mt-2 font-mono text-xs text-muted">
-              {education.period} · {education.grade}
-            </p>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {education.courses.map((course) => (
-                <li key={course}>
-                  <Tag>{course}</Tag>
-                </li>
-              ))}
-            </ul>
+          <div className="flex flex-col gap-6">
+            <Portrait />
+
+            <div className="rounded-lg border border-border bg-surface/60 p-6">
+              <p className="font-mono text-sm text-primary">~/education</p>
+              <h3 className="mt-3 font-mono text-lg font-semibold">{education.degree}</h3>
+              <p className="mt-1 text-sm text-muted">{education.school}</p>
+              <p className="mt-2 font-mono text-xs text-muted">
+                {education.period} · {education.grade}
+              </p>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {education.courses.map((course) => (
+                  <li key={course}>
+                    <Tag>{course}</Tag>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </Reveal>
       </div>
