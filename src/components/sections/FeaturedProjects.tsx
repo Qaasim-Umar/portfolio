@@ -3,6 +3,7 @@ import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/motion/Reveal";
 import { Tag } from "@/components/ui/Tag";
 import { Icon, type IconKey } from "@/components/icons/Icon";
+import { ProjectScreenshots } from "@/components/ui/ProjectScreenshots";
 
 const LINK_ICON: Record<ProjectLinkType, IconKey> = {
   play: "play",
@@ -68,6 +69,7 @@ function FeaturedCard({ project }: { project: Project }) {
           </ul>
         </div>
       </div>
+      <ProjectScreenshots screenshots={project.screenshots} />
     </article>
   );
 }

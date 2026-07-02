@@ -119,6 +119,12 @@ export interface ProjectMetric {
   readonly label: string;
 }
 
+export interface ProjectScreenshot {
+  /** Path under /public, e.g. "/projects/nahdi/home.jpg". */
+  readonly src: string;
+  readonly alt: string;
+}
+
 export interface Project {
   readonly id: string;
   readonly name: string;
@@ -131,6 +137,8 @@ export interface Project {
   readonly metrics: readonly ProjectMetric[];
   readonly stack: readonly string[];
   readonly links: readonly ProjectLink[];
+  /** Optional phone screenshots; the frame is hidden until the files exist in /public. */
+  readonly screenshots?: readonly ProjectScreenshot[];
 }
 
 export interface SkillItem {
@@ -426,6 +434,10 @@ export const projects: readonly Project[] = [
     links: [
       { label: "Play Store", href: "https://play.google.com/store/apps/details?id=com.nahdi.main&hl=en", type: "play" },
       { label: "App Store", href: "https://apps.apple.com/us/app/%D8%A7%D9%84%D9%86%D9%87%D8%AF%D9%8A-nahdi/id868704084", type: "appstore" },
+    ],
+    screenshots: [
+      { src: "/projects/nahdi/splash.jpg", alt: "Nahdi app splash screen" },
+      { src: "/projects/nahdi/home.jpg", alt: "Nahdi app home screen with sun care promotions and category shortcuts" },
     ],
   },
   {
