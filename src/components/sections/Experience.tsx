@@ -25,7 +25,7 @@ export function Experience() {
               </div>
 
               {/* Entry */}
-              <div className="pb-10 last:pb-0">
+              <div className={index === lastIndex ? "pb-0" : "pb-16"}>
                 <div className="flex flex-col gap-x-3 gap-y-1 sm:flex-row sm:items-baseline sm:justify-between">
                   <h3 className="font-mono text-base font-semibold">
                     {item.role}

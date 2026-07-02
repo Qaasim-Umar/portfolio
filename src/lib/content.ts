@@ -106,7 +106,7 @@ export interface Education {
   readonly courses: readonly string[];
 }
 
-export type ProjectLinkType = "play" | "repo" | "site" | "case";
+export type ProjectLinkType = "play" | "appstore" | "repo" | "site" | "case";
 
 export interface ProjectLink {
   readonly label: string;
@@ -210,11 +210,11 @@ export const profile: Profile = {
   available: "Open to senior mobile roles",
   email: "qaasim405@gmail.com",
   resumeUrl: "/resume.pdf",
-  headline: ["I build mobile apps", "that ship to millions", "and answer to no server."],
+  headline: ["I build mobile apps", "that ship to millions", "and never miss a frame."],
   tagline:
     "Flutter from pixel to protocol, from a CMS-driven app with 1M+ users to decentralized, privacy-first messaging over NOSTR.",
   bio: [
-    "I'm a senior mobile engineer who has spent 5+ years turning Flutter into production software people actually keep on their home screen. Most recently I co-built Nahdi, a highly dynamic, localised commerce app serving over a million users, and contributed to White Noise, a decentralized, privacy-first messenger built on NOSTR with a Rust MLS crate doing the cryptographic heavy lifting.",
+    "I'm a senior mobile engineer who has spent 4+ years turning Flutter into production software people actually keep on their home screen. Most recently I co-built Nahdi, a highly dynamic, localised commerce app serving over a million users, and contributed to White Noise, a decentralized, privacy-first messenger built on NOSTR with a Rust MLS crate doing the cryptographic heavy lifting.",
     "I care about the unglamorous parts: clean architecture, offline-first behaviour, pixel-perfect localisation, and state management that a teammate can read at 2am without crying. Stacked, Riverpod, MVVM, Clean Architecture, I've shipped them all, and I have opinions about when each one earns its keep.",
     "Computer Engineering grad from FUT Minna. Somewhere along the way I led Android communities, ran bootcamps that grew a campus dev scene from almost nothing to 300+, and never quite kicked the open-source habit.",
   ],
@@ -235,7 +235,7 @@ export const portrait: PortraitInfo = {
 export const heroTerminal: readonly TerminalLine[] = [
   { command: "whoami", output: "muhammad qaasim, senior flutter engineer" },
   { command: "cat stack.txt", output: "flutter · dart · riverpod · rust · nostr" },
-  { command: "uptime", output: "5+ yrs shipping mobile · 1M+ users reached" },
+  { command: "uptime", output: "4+ yrs shipping mobile · 1M+ users reached" },
   { command: "echo $STATUS", output: "open to senior mobile roles" },
 ];
 
@@ -279,7 +279,7 @@ export const socials: readonly SocialLink[] = [
 /* -------------------------------------------------------------------------- */
 
 export const stats: readonly Stat[] = [
-  { value: "5+ yrs", label: "shipping mobile" },
+  { value: "4+ yrs", label: "shipping mobile" },
   { value: "1M+", label: "users reached" },
   { value: "10+", label: "products shipped" },
   { value: "300+", label: "devs mentored" },
@@ -290,6 +290,16 @@ export const stats: readonly Stat[] = [
 /* -------------------------------------------------------------------------- */
 
 export const experience: readonly ExperienceItem[] = [
+  {
+    id: "teesas",
+    role: "Software Engineer",
+    org: "Teesas",
+    period: "Jan 2026 - Present",
+    summary:
+      "Building educational mobile apps for Teesas, including Teesas Education, a gamified learning app for Nigerian students preparing for JAMB, WAEC, and NECO.",
+    tags: ["Flutter", "Dart", "MobX", "Clean Architecture"],
+    current: true,
+  },
   {
     id: "ipf",
     role: "Software Engineer",
@@ -384,6 +394,19 @@ export const education: Education = {
 
 export const projects: readonly Project[] = [
   {
+    id: "biuda",
+    name: "Biuda",
+    tagline: "Making tech skills fun for kids.",
+    description:
+      "Built a mobile EdTech app that teaches children and teenagers tech skills through live classes, self-paced lessons, and hands-on projects spanning coding, design, Python, AI, and game development. Gamified progress and an AI-personalised learning path keep young learners engaged.",
+    role: "Solo Project · Biuda",
+    period: "2025",
+    featured: false,
+    metrics: [],
+    stack: ["Flutter", "Dart", "Riverpod", "Clean Architecture"],
+    links: [{ label: "Play Store", href: "https://play.google.com/store/apps/details?id=com.biudahq.mobile.app", type: "play" }],
+  },
+  {
     id: "nahdi",
     name: "Nahdi",
     tagline: "A localised commerce app for 1M+ people.",
@@ -395,11 +418,15 @@ export const projects: readonly Project[] = [
     featured: true,
     metrics: [
       { value: "1M+", label: "users" },
+      { value: "5M+", label: "downloads" },
       { value: "4.6★", label: "Play Store" },
       { value: "Clean", label: "architecture" },
     ],
     stack: ["Flutter", "Dart", "Riverpod", "Contentful", "Algolia", "Dynamic Yield", "Hive"],
-    links: [{ label: "Play Store", href: "https://play.google.com/store/apps/details?id=com.nahdi.main&hl=en", type: "play" }],
+    links: [
+      { label: "Play Store", href: "https://play.google.com/store/apps/details?id=com.nahdi.main&hl=en", type: "play" },
+      { label: "App Store", href: "https://apps.apple.com/us/app/%D8%A7%D9%84%D9%86%D9%87%D8%AF%D9%8A-nahdi/id868704084", type: "appstore" },
+    ],
   },
   {
     id: "white-noise",
@@ -418,6 +445,35 @@ export const projects: readonly Project[] = [
     ],
     stack: ["Flutter", "Dart", "Rust", "NOSTR", "MLS", "Cryptography"],
     links: [{ label: "Marmot Protocol", href: "https://github.com/marmot-protocol/whitenoise-archive/releases", type: "repo" }],
+  },
+  {
+    id: "teesas-education",
+    name: "Teesas Education",
+    tagline: "Gamified learning for Nigerian students, JAMB to JSS.",
+    description:
+      "Co-built an all-in-one learning app covering Grades 1-6 through JSS1-SS3, with video lessons from top teachers, live tutoring, and exam prep for JAMB, WAEC, and NECO. Lessons are delivered in English and local languages like Yoruba, Igbo, and Hausa, wrapped in a gamified, interactive experience.",
+    role: "Team Project · Teesas",
+    period: "2026",
+    featured: true,
+    metrics: [{ value: "100k+", label: "downloads" }],
+    stack: ["Flutter", "Dart", "MobX", "Clean Architecture"],
+    links: [
+      { label: "Play Store", href: "https://play.google.com/store/apps/details?id=app.teesas", type: "play" },
+      { label: "App Store", href: "https://apps.apple.com/us/app/teesas-education-learn/id1595847520", type: "appstore" },
+    ],
+  },
+  {
+    id: "hotels-ng",
+    name: "Hotels.ng",
+    tagline: "Book hotels across Nigeria, without the hassle.",
+    description:
+      "Co-built the booking app for Nigeria's leading hotel marketplace: search 10,000+ hotels across 1,000+ cities, filter by budget, and book, cancel, or extend a stay in a few taps.",
+    role: "Team Project · Hotels NG",
+    period: "2022 - 2023",
+    featured: false,
+    metrics: [{ value: "10k+", label: "downloads" }],
+    stack: ["Flutter", "ChangeNotifier", "Provider"],
+    links: [{ label: "Play Store", href: "https://play.google.com/store/apps/details?id=ng.hotels.booking.app", type: "play" }],
   },
   {
     id: "cash-register",
@@ -502,6 +558,22 @@ export const projects: readonly Project[] = [
     links: [{ label: "Play Store", href: "https://play.google.com/store", type: "play" }],
   },
   {
+    id: "al-maathuraat",
+    name: "Al-Maathuraat",
+    tagline: "Morning and evening supplications, simplified.",
+    description:
+      "A personal Android app that makes the daily morning and evening supplications (al-Ma'thurat) easier to keep up with. The Ma'thurat section is fully transliterated, with a built-in counter and 50 authentic supplications from the Prophet ﷺ.",
+    role: "Personal Project",
+    period: "2020",
+    featured: false,
+    metrics: [
+      { value: "5.0★", label: "Play Store" },
+      { value: "500+", label: "downloads" },
+    ],
+    stack: ["Java", "Android", "MVVM"],
+    links: [{ label: "Play Store", href: "https://play.google.com/store/apps/details?id=com.quwaysim.maathuraat", type: "play" }],
+  },
+  {
     id: "regapp",
     name: "RegApp",
     tagline: "Killed a paper ledger. Permanently.",
@@ -529,7 +601,7 @@ export const projects: readonly Project[] = [
   },
 ];
 
-/** Featured highlights (Nahdi + White Noise). */
+/** Featured highlights (Nahdi + White Noise + Teesas Education). */
 export const featuredProjects: readonly Project[] = projects.filter((p) => p.featured);
 /** Everything else, for the full grid. */
 export const otherProjects: readonly Project[] = projects.filter((p) => !p.featured);
@@ -542,7 +614,7 @@ export const skills: readonly SkillGroup[] = [
   {
     label: "Languages",
     items: [
-      { name: "Dart", note: "3y+" },
+      { name: "Dart", note: "4y+" },
       { name: "Java", note: "2y" },
       { name: "Kotlin", note: "<1y" },
       { name: "Rust", note: "<1y" },
@@ -552,8 +624,9 @@ export const skills: readonly SkillGroup[] = [
   {
     label: "Mobile & Flutter",
     items: [
-      { name: "Flutter", note: "3y+" },
+      { name: "Flutter", note: "4y+" },
       { name: "Android Studio", note: "5y+" },
+      { name: "Rust FFI", note: "<1y" },
       { name: "Responsive / multi form-factor" },
       { name: "Offline-first" },
       { name: "Localisation" },
@@ -563,7 +636,7 @@ export const skills: readonly SkillGroup[] = [
     label: "State & Architecture",
     items: [
       { name: "Stacked", note: "2y" },
-      { name: "Riverpod", note: "1y+" },
+      { name: "Riverpod", note: "2y+" },
       { name: "MVVM" },
       { name: "Clean Architecture" },
     ],
@@ -571,11 +644,11 @@ export const skills: readonly SkillGroup[] = [
   {
     label: "Backend & Services",
     items: [
-      { name: "Firebase" },
+      { name: "Firebase", note: "2y+" },
+      { name: "Supabase", note: "1y" },
       { name: "Contentful CMS", note: "1y" },
       { name: "Algolia", note: "1y" },
       { name: "Dynamic Yield" },
-      { name: "NOSTR" },
       { name: "SQLite", note: "2y" },
       { name: "Hive" },
     ],
@@ -583,9 +656,17 @@ export const skills: readonly SkillGroup[] = [
   {
     label: "Tooling & Platforms",
     items: [
-      { name: "Git", note: "3y+" },
-      { name: "VS Code", note: "4y+" },
-      { name: "Google Play Store", note: "2y+" },
+      { name: "Git", note: "4y+" },
+      { name: "VS Code", note: "5y+" },
+      { name: "PlayStore", note: "3y+" },
+      { name: "AppStore", note: "1y" },
+    ],
+  },
+  {
+    label: "Protocols & Freedom Tech",
+    items: [
+      { name: "NOSTR", note: "<1y" },
+      { name: "Marmot", note: "<1y" },
     ],
   },
 ];
@@ -670,7 +751,7 @@ export const sections = {
     nav: true,
     title: "Featured Work",
     prompt: "~/work --featured",
-    intro: "Two projects that earn the top of the page: a million users, and zero servers to trust.",
+    intro: "Three projects that earn the top of the page: a million users, zero servers to trust, and students learning smarter.",
   },
   experience: {
     index: "03",

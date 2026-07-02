@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { IconName } from "@/lib/content";
 
-export type IconKey = IconName | "sun" | "moon" | "terminal" | "play";
+export type IconKey = IconName | "sun" | "moon" | "terminal" | "play" | "apple";
 
 /** Brand glyphs are solid fills; UI glyphs are 2px strokes. */
 const STROKE_ICONS = new Set<IconKey>([
@@ -67,6 +67,9 @@ const PATHS: Record<IconKey, ReactNode> = {
     <>
       <polygon points="6 3 20 12 6 21 6 3" />
     </>
+  ),
+  apple: (
+    <path d="M16.365 1.43c0 1.14-.415 2.09-1.245 2.85-.9.83-1.995 1.3-3.075 1.22-.135-1.1.42-2.24 1.23-3.02.885-.85 2.16-1.35 3.09-1.05zm3.15 16.62c-.42.98-.93 1.94-1.605 2.83-.9 1.19-1.83 2.37-3.3 2.4-1.44.03-1.905-.85-3.555-.85-1.65 0-2.16.83-3.525.88-1.41.05-2.49-1.29-3.405-2.47-1.845-2.4-3.255-6.79-1.365-9.75 1.02-1.6 2.79-2.62 4.71-2.65 1.38-.03 2.685.93 3.525.93.84 0 2.415-1.15 4.08-.98.695.03 2.64.28 3.885 2.09-.1.06-2.325 1.36-2.295 4.05.03 3.21 2.82 4.28 2.85 4.29z" />
   ),
   sun: (
     <>

@@ -6,6 +6,7 @@ import { Icon, type IconKey } from "@/components/icons/Icon";
 
 const LINK_ICON: Record<ProjectLinkType, IconKey> = {
   play: "play",
+  appstore: "apple",
   repo: "github",
   site: "globe",
   case: "arrow",

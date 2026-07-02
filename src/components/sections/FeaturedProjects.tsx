@@ -6,6 +6,7 @@ import { Icon, type IconKey } from "@/components/icons/Icon";
 
 const LINK_ICON: Record<ProjectLinkType, IconKey> = {
   play: "play",
+  appstore: "apple",
   repo: "github",
   site: "globe",
   case: "arrow",
@@ -48,7 +49,7 @@ function FeaturedCard({ project }: { project: Project }) {
         </div>
 
         <div className="flex flex-col gap-6 border-t border-border/60 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-          <ul className="grid grid-cols-3 gap-4">
+          <ul className="flex flex-wrap gap-x-6 gap-y-4">
             {project.metrics.map((metric) => (
               <li key={metric.label}>
                 <p className="font-mono text-xl font-semibold text-primary sm:text-2xl">
