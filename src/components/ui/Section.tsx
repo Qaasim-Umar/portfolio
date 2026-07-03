@@ -23,7 +23,7 @@ export function Section({ section, children, className }: SectionProps) {
       className={`scroll-mt-24 border-t border-border/70 py-20 sm:py-28 ${className ?? ""}`}
     >
       <Container>
-        <div className="grid gap-x-10 gap-y-6 lg:grid-cols-[5rem_minmax(0,1fr)]">
+        <div className="grid grid-cols-1 gap-x-10 gap-y-6 lg:grid-cols-[5rem_minmax(0,1fr)]">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <span className="font-mono text-xs tracking-widest text-muted">{section.index}</span>
           </div>
