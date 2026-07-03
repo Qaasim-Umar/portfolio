@@ -431,13 +431,14 @@ export const projects: readonly Project[] = [
     description:
       "Built a mobile EdTech app that teaches children and teenagers tech skills through live classes, self-paced lessons, and hands-on projects spanning coding, design, Python, AI, and game development. Gamified progress and an AI-personalised learning path keep young learners engaged.",
     role: "Solo Project · Biuda",
+    orgLabel: "Biuda",
+    orgUrl: "https://biudahq.com/",
     period: "2025",
     featured: false,
     metrics: [],
     stack: ["Flutter", "Dart", "Riverpod", "Clean Architecture"],
     links: [
       { label: "Play Store", href: "https://play.google.com/store/apps/details?id=com.biudahq.mobile.app", type: "play" },
-      { label: "Website", href: "https://biudahq.com", type: "site" },
     ],
   },
   {
@@ -557,7 +558,9 @@ export const projects: readonly Project[] = [
     tagline: "Remote monitoring & control for a weed-killing robot.",
     description:
       "Final-year project: a Flutter app to remotely monitor and control a weeding robot, with Firebase as the backend. Built with Stacked + MVVM.",
-    role: "Final Year Project",
+    role: "Final Year Project · Federal University of Technology, Minna",
+    orgLabel: "Federal University of Technology, Minna",
+    orgUrl: "https://futminna.edu.ng/",
     period: "Dec 2022 - Jun 2023",
     featured: false,
     metrics: [],
@@ -611,7 +614,7 @@ export const projects: readonly Project[] = [
     tagline: "Islamic supplications, beautifully indexed.",
     description:
       "A personal Android app of Islamic supplications built for a school. Quietly beloved on the Play Store with a 4.9★ rating.",
-    role: "Personal Project",
+    role: "Contract",
     period: "Jul 2020",
     featured: false,
     metrics: [
@@ -657,7 +660,7 @@ export const projects: readonly Project[] = [
     tagline: "Manage your MiFi without a browser tab.",
     description:
       "A fun project: a mobile app for Airtel MiFi devices so users can manage their hardware without opening a browser every time.",
-    role: "Group Project · for fun",
+    role: "Group Project · For fun",
     period: "Nov 2019",
     featured: false,
     metrics: [],
