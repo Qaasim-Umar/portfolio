@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { IconName } from "@/lib/content";
 
-export type IconKey = IconName | "sun" | "moon" | "terminal" | "play" | "apple";
+export type IconKey = IconName | "sun" | "moon" | "terminal" | "play" | "apple" | "close";
 
 /** Brand glyphs are solid fills; UI glyphs are 2px strokes. */
 const STROKE_ICONS = new Set<IconKey>([
@@ -15,6 +15,7 @@ const STROKE_ICONS = new Set<IconKey>([
   "moon",
   "terminal",
   "play",
+  "close",
 ]);
 
 const PATHS: Record<IconKey, ReactNode> = {
@@ -89,6 +90,12 @@ const PATHS: Record<IconKey, ReactNode> = {
     <>
       <polyline points="4 17 10 11 4 5" />
       <line x1="12" x2="20" y1="19" y2="19" />
+    </>
+  ),
+  close: (
+    <>
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
     </>
   ),
 };

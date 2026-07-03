@@ -696,6 +696,7 @@ export const skills: readonly SkillGroup[] = [
       { name: "Offline-first" },
       { name: "Localisation" },
       { name: "Theming" },
+      { name: "Widget/Unit Testing" },
     ],
   },
   {
@@ -718,6 +719,7 @@ export const skills: readonly SkillGroup[] = [
       { name: "BazaarVoice" },
       { name: "SQLite", note: "2y" },
       { name: "Hive" },
+      { name: "Push Notifications (FCM)" },
     ],
   },
   {
@@ -727,6 +729,8 @@ export const skills: readonly SkillGroup[] = [
       { name: "VS Code", note: "5y+" },
       { name: "PlayStore", note: "3y+" },
       { name: "AppStore", note: "1y" },
+      { name: "Codemagic" },
+      { name: "Performance Profiling" },
     ],
   },
   {
@@ -802,6 +806,12 @@ export const honours: readonly Honour[] = [
     title: "Featured by Feature/mind",
     detail: "Called out in Feature/mind's LinkedIn announcement celebrating the Nahdi launch.",
     href: "https://www.linkedin.com/posts/girgingokhan_we-are-excited-to-share-that-featuremind-activity-7315376470405660672-jVh9?utm_source=share&utm_medium=member_desktop&rcm=ACoAACqxAE0BK5BCZRingVlhbHNtfRTwLfRhLEw",
+  },
+  {
+    id: "biuda-launch-mention",
+    title: "Featured in Biuda's launch celebration",
+    detail: "Called out in Patrick Chukwu's LinkedIn post celebrating Biuda's product launch.",
+    href: "https://www.linkedin.com/posts/patrick-chukwu_biuda-productlaunch-startupjourney-activity-7440428316257591296-_2ob?utm_source=share&utm_medium=member_desktop&rcm=ACoAACqxAE0BK5BCZRingVlhbHNtfRTwLfRhLEw",
   },
 ];
 
