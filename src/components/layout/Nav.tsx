@@ -168,7 +168,7 @@ export function Nav() {
             className="pointer-events-none absolute inset-x-0 top-full flex justify-center px-5 pt-3 sm:justify-end sm:px-8"
           >
             <div className="rounded-md border border-primary/50 bg-surface px-3 py-2 font-mono text-xs text-text shadow-lg">
-              <span className="text-primary">copied:</span> {profile.email} — your mail app should be opening too.
+              <span className="text-primary">copied:</span> {profile.email}. Your mail app should be opening too.
             </div>
           </motion.div>
         ) : null}
