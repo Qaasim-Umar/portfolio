@@ -18,7 +18,7 @@ export function Footer() {
               gradients were harmed in the making of this site.
             </p>
             <p className="mt-2 font-mono text-xs text-muted">
-              © {year} {profile.name}. All rights reserved — most of them, anyway.
+              © {year} {profile.name}. All rights reserved, most of them, anyway.
             </p>
           </div>
 
