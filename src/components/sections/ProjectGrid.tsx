@@ -3,6 +3,7 @@ import { Section } from "@/components/ui/Section";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { Tag } from "@/components/ui/Tag";
 import { Icon, type IconKey } from "@/components/icons/Icon";
+import { RoleLine } from "@/components/ui/RoleLine";
 
 const LINK_ICON: Record<ProjectLinkType, IconKey> = {
   play: "play",
@@ -23,6 +24,9 @@ function ProjectCard({ project }: { project: Project }) {
       <h3 className="mt-3 font-mono text-lg font-semibold tracking-tight">{project.name}</h3>
       <p className="mt-1 text-sm text-text">{project.tagline}</p>
       <p className="mt-2 text-pretty text-sm leading-relaxed text-muted">{project.description}</p>
+      <p className="mt-2 font-mono text-xs text-muted">
+        <RoleLine role={project.role} orgLabel={project.orgLabel} orgUrl={project.orgUrl} />
+      </p>
 
       {project.metrics.length > 0 ? (
         <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1">

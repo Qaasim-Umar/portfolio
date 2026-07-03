@@ -14,7 +14,22 @@ export function Honours() {
           >
             <p className="font-mono text-xs text-primary">★ award</p>
             <h3 className="mt-2 font-mono text-lg font-semibold">{honour.title}</h3>
-            <p className="mt-2 text-pretty text-sm leading-relaxed text-muted">{honour.detail}</p>
+            <p className="mt-2 text-pretty text-sm leading-relaxed text-muted">
+              {honour.detail}
+              {honour.href ? (
+                <>
+                  {" "}
+                  <a
+                    href={honour.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-muted/70 underline decoration-dotted underline-offset-2 hover:text-primary"
+                  >
+                    (source)
+                  </a>
+                </>
+              ) : null}
+            </p>
           </StaggerItem>
         ))}
       </Stagger>

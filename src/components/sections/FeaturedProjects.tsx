@@ -4,6 +4,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Tag } from "@/components/ui/Tag";
 import { Icon, type IconKey } from "@/components/icons/Icon";
 import { ProjectScreenshots } from "@/components/ui/ProjectScreenshots";
+import { RoleLine } from "@/components/ui/RoleLine";
 
 const LINK_ICON: Record<ProjectLinkType, IconKey> = {
   play: "play",
@@ -28,8 +29,20 @@ function FeaturedCard({ project }: { project: Project }) {
           <p className="mt-1 text-lg text-text">{project.tagline}</p>
           <p className="mt-4 max-w-prose text-pretty leading-relaxed text-muted">
             {project.description}
+            {project.sourceUrl ? (
+              <a
+                href={project.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-1.5 text-xs text-muted/70 underline decoration-dotted underline-offset-2 hover:text-primary"
+              >
+                (source)
+              </a>
+            ) : null}
           </p>
-          <p className="mt-4 font-mono text-xs text-muted">{project.role}</p>
+          <p className="mt-4 font-mono text-xs text-muted">
+            <RoleLine role={project.role} orgLabel={project.orgLabel} orgUrl={project.orgUrl} />
+          </p>
 
           {project.links.length > 0 ? (
             <div className="mt-6 flex flex-wrap gap-3">

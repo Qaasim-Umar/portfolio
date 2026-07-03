@@ -1,7 +1,54 @@
-import { experience, sections } from "@/lib/content";
+import { experience, sections, type ExperienceItem } from "@/lib/content";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/motion/Reveal";
 import { Tag } from "@/components/ui/Tag";
+
+/** Renders `item.org`, hyperlinking the `orgLabel` substring (or the whole string) to `orgUrl`. */
+function OrgLine({ item }: { item: ExperienceItem }) {
+  const note = item.orgNote ? (
+    <>
+      {" "}
+      <a
+        href={item.orgNote.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-xs text-muted underline decoration-dotted underline-offset-2 hover:text-primary"
+      >
+        ({item.orgNote.label})
+      </a>
+    </>
+  ) : null;
+
+  if (!item.orgUrl) {
+    return (
+      <p className="mt-0.5 text-sm text-primary">
+        {item.org}
+        {note}
+      </p>
+    );
+  }
+
+  const label = item.orgLabel ?? item.org;
+  const index = item.org.indexOf(label);
+  const before = index >= 0 ? item.org.slice(0, index) : "";
+  const after = index >= 0 ? item.org.slice(index + label.length) : "";
+
+  return (
+    <p className="mt-0.5 text-sm text-primary">
+      {before}
+      <a
+        href={item.orgUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline decoration-dotted underline-offset-2 hover:opacity-80"
+      >
+        {label}
+      </a>
+      {after}
+      {note}
+    </p>
+  );
+}
 
 export function Experience() {
   const lastIndex = experience.length - 1;
@@ -37,7 +84,7 @@ export function Experience() {
                   </h3>
                   <span className="shrink-0 font-mono text-xs text-muted">{item.period}</span>
                 </div>
-                <p className="mt-0.5 text-sm text-primary">{item.org}</p>
+                <OrgLine item={item} />
                 <p className="mt-2 max-w-prose text-pretty text-sm leading-relaxed text-muted">
                   {item.summary}
                 </p>

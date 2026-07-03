@@ -8,7 +8,25 @@ import { ThemeToggle } from "@/components/theme/ThemeToggle";
 export function Nav() {
   const [activeId, setActiveId] = useState<string>("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
   const reduceMotion = useReducedMotion();
+
+  // Mailto links silently no-op when the browser has no mail client configured,
+  // so back them with a clipboard copy that always gives visible feedback.
+  useEffect(() => {
+    if (!copied) return;
+    const timer = setTimeout(() => setCopied(false), 2500);
+    return () => clearTimeout(timer);
+  }, [copied]);
+
+  const handleSayHi = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+    } catch {
+      // Clipboard blocked (permissions/insecure context) — mailto still fires.
+    }
+  };
 
   // Highlight the nav item for the section currently in view.
   useEffect(() => {
@@ -75,6 +93,7 @@ export function Nav() {
         <div className="flex items-center gap-2">
           <a
             href={`mailto:${profile.email}`}
+            onClick={handleSayHi}
             className="hidden rounded-md border border-border px-3 py-2 font-mono text-[13px] text-text transition-colors duration-200 hover:border-primary hover:text-primary sm:inline-flex"
           >
             Say hi
@@ -134,6 +153,23 @@ export function Nav() {
                 </li>
               ))}
             </ul>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {copied ? (
+          <motion.div
+            role="status"
+            initial={{ opacity: 0, y: reduceMotion ? 0 : -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: reduceMotion ? 0 : -6 }}
+            transition={{ duration: reduceMotion ? 0 : 0.2 }}
+            className="pointer-events-none absolute inset-x-0 top-full flex justify-center px-5 pt-3 sm:justify-end sm:px-8"
+          >
+            <div className="rounded-md border border-primary/50 bg-surface px-3 py-2 font-mono text-xs text-text shadow-lg">
+              <span className="text-primary">copied:</span> {profile.email} — your mail app should be opening too.
+            </div>
           </motion.div>
         ) : null}
       </AnimatePresence>

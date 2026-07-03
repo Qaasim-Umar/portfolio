@@ -91,6 +91,10 @@ export interface ExperienceItem {
   readonly role: string;
   readonly org: string;
   readonly orgUrl?: string;
+  /** Substring of `org` to hyperlink; defaults to the whole `org` string when omitted. */
+  readonly orgLabel?: string;
+  /** Small parenthetical aside after the org name, e.g. "(now Aegeantic)", with its own link. */
+  readonly orgNote?: { readonly label: string; readonly href: string };
   readonly period: string;
   readonly location?: string;
   readonly summary: string;
@@ -139,6 +143,11 @@ export interface Project {
   readonly links: readonly ProjectLink[];
   /** Optional phone screenshots; the frame is hidden until the files exist in /public. */
   readonly screenshots?: readonly ProjectScreenshot[];
+  /** Substring of `role` to render as a hyperlink (e.g. the org/company name). Pairs with `orgUrl`. */
+  readonly orgLabel?: string;
+  readonly orgUrl?: string;
+  /** Subtle citation link appended after `description`, e.g. a press mention. */
+  readonly sourceUrl?: string;
 }
 
 export interface SkillItem {
@@ -164,6 +173,8 @@ export interface Honour {
   readonly id: string;
   readonly title: string;
   readonly detail: string;
+  /** Optional link to the source (press mention, LinkedIn post, etc). */
+  readonly href?: string;
 }
 
 export interface TerminalLine {
@@ -302,6 +313,7 @@ export const experience: readonly ExperienceItem[] = [
     id: "teesas",
     role: "Software Engineer",
     org: "Teesas",
+    orgUrl: "https://teesas.com/",
     period: "Jan 2026 - Present",
     summary:
       "Building educational mobile apps for Teesas, including Teesas Education, a gamified learning app for Nigerian students preparing for JAMB, WAEC, and NECO.",
@@ -312,6 +324,8 @@ export const experience: readonly ExperienceItem[] = [
     id: "ipf",
     role: "Software Engineer",
     org: "Internet Privacy Foundation",
+    orgUrl: "https://ipf.dev/",
+    orgNote: { label: "formerly Parres", href: "https://parres.org" },
     period: "May 2025 - Dec 2025",
     summary:
       "Contributed to White Noise (Marmot Protocol): a decentralized, privacy-first messenger in Flutter/Dart, integrating a Rust MLS crate for end-to-end group messaging over NOSTR.",
@@ -321,6 +335,8 @@ export const experience: readonly ExperienceItem[] = [
     id: "featuremind",
     role: "Software Engineer",
     org: "Feature/mind",
+    orgUrl: "https://featuremind.com",
+    orgNote: { label: "now Aegeantic", href: "https://aegeantic.com" },
     period: "Dec 2023 - Jul 2025",
     summary:
       "Co-built Nahdi, a pixel-perfect, fully localised commerce app serving 1M+ users. Contentful CMS, Algolia search, Dynamic Yield personalisation, Hive storage, Riverpod + Clean Architecture.",
@@ -330,6 +346,8 @@ export const experience: readonly ExperienceItem[] = [
     id: "oss",
     role: "Open Source Contributor",
     org: "Marmot Protocol & friends",
+    orgLabel: "Marmot Protocol",
+    orgUrl: "https://github.com/marmot-protocol",
     period: "May 2025 - Present",
     summary:
       "Ongoing contributions to open, privacy-respecting software, most notably the Marmot Protocol / White Noise ecosystem.",
@@ -340,6 +358,7 @@ export const experience: readonly ExperienceItem[] = [
     id: "hoteltravel",
     role: "Flutter Developer",
     org: "Hotel Travel Inc",
+    orgUrl: "https://hotels.ng/",
     period: "Mar 2022 - Dec 2023",
     summary:
       "Built multi-form-factor, offline-first Flutter products including Cash Register by Timbu, accurate transactions, payments, and professional receipts. SQLite, Stacked, MVVM.",
@@ -349,6 +368,7 @@ export const experience: readonly ExperienceItem[] = [
     id: "zurichat-oss",
     role: "Open-code Contributor",
     org: "Zuri Chat",
+    orgUrl: "https://hng.tech/",
     period: "Dec 2022 - Dec 2023",
     summary:
       "Continued contributing to the Zuri Chat mobile codebase alongside the WorkshopApps community after the internship wrapped.",
@@ -358,6 +378,7 @@ export const experience: readonly ExperienceItem[] = [
     id: "hng",
     role: "Software Engineer · HNGi8",
     org: "Zuri Chat",
+    orgUrl: "https://hng.tech/",
     period: "Aug 2021 - Oct 2021",
     summary:
       "Flutter Developer Track Finalist at the HNGi8 remote internship. Repo maintainer during the program and Flutter mobile team lead post-internship. Stacked + MVVM.",
@@ -367,6 +388,7 @@ export const experience: readonly ExperienceItem[] = [
     id: "alhikmah",
     role: "IT Support Intern",
     org: "Al-Hikmah University Ilorin · ICT Centre",
+    orgUrl: "https://alhikmahuniversity.edu.ng/",
     period: "Jun 2021 - Sep 2021",
     summary:
       "Kept the university's ICT centre running; hardware, networks, and the occasional miracle for a stubborn printer.",
@@ -376,6 +398,7 @@ export const experience: readonly ExperienceItem[] = [
     id: "swep",
     role: "Student Work Experience (SWEP)",
     org: "Federal University of Technology, Minna",
+    orgUrl: "https://futminna.edu.ng/",
     period: "Sep 2018 - Oct 2018",
     summary:
       "Where it started: an awarded engineering work placement across multiple departments. Recognised for standout contribution among 400+ students.",
@@ -419,8 +442,12 @@ export const projects: readonly Project[] = [
     name: "Nahdi",
     tagline: "A localised commerce app for 1M+ people.",
     description:
-      "Co-built a highly dynamic, pixel-perfect and fully localised application powered by the Contentful CMS. Algolia drives search, Dynamic Yield handles personalisation, Hive backs local storage, and Riverpod + Clean Architecture keep a large surface area maintainable.",
+      "Co-built a highly dynamic, pixel-perfect and fully localised application powered by the Contentful CMS. Algolia drives search, Dynamic Yield handles personalisation, BazaarVoice powers ratings and reviews, Hive backs local storage, and Riverpod + Clean Architecture keep a large surface area maintainable. Today it connects 1,100+ pharmacies to 1M+ active users across the Middle East.",
     role: "Team Project · Feature/mind",
+    orgLabel: "Feature/mind",
+    orgUrl: "https://featuremind.com",
+    sourceUrl:
+      "https://www.linkedin.com/posts/girgingokhan_we-are-excited-to-share-that-featuremind-activity-7315376470405660672-jVh9?utm_source=share&utm_medium=member_desktop&rcm=ACoAACqxAE0BK5BCZRingVlhbHNtfRTwLfRhLEw",
     period: "Dec 2023 - Jun 2025",
     status: "Live · in maintenance",
     featured: true,
@@ -430,7 +457,7 @@ export const projects: readonly Project[] = [
       { value: "4.6★", label: "Play Store" },
       { value: "Clean", label: "architecture" },
     ],
-    stack: ["Flutter", "Dart", "Riverpod", "Contentful", "Algolia", "Dynamic Yield", "Hive"],
+    stack: ["Flutter", "Dart", "Riverpod", "Contentful", "Algolia", "Dynamic Yield", "BazaarVoice", "Hive"],
     links: [
       { label: "Play Store", href: "https://play.google.com/store/apps/details?id=com.nahdi.main&hl=en", type: "play" },
       { label: "App Store", href: "https://apps.apple.com/us/app/%D8%A7%D9%84%D9%86%D9%87%D8%AF%D9%8A-nahdi/id868704084", type: "appstore" },
@@ -447,6 +474,8 @@ export const projects: readonly Project[] = [
     description:
       "Contributed to a powerful, decentralized, privacy-first messaging app powered by Flutter/Dart with a Rust MLS crate integration over NOSTR; end-to-end encrypted group messaging that doesn't trust a central server.",
     role: "Open Source · Internet Privacy Foundation",
+    orgLabel: "Internet Privacy Foundation",
+    orgUrl: "https://ipf.dev/",
     period: "May 2025 - Dec 2025",
     status: "Marmot Protocol",
     featured: true,
@@ -465,6 +494,8 @@ export const projects: readonly Project[] = [
     description:
       "Co-built an all-in-one learning app covering Grades 1-6 through JSS1-SS3, with video lessons from top teachers, live tutoring, and exam prep for JAMB, WAEC, and NECO. Lessons are delivered in English and local languages like Yoruba, Igbo, and Hausa, wrapped in a gamified, interactive experience.",
     role: "Team Project · Teesas",
+    orgLabel: "Teesas",
+    orgUrl: "https://teesas.com/",
     period: "2026",
     featured: true,
     metrics: [{ value: "100k+", label: "downloads" }],
@@ -481,6 +512,8 @@ export const projects: readonly Project[] = [
     description:
       "Co-built the booking app for Nigeria's leading hotel marketplace: search 10,000+ hotels across 1,000+ cities, filter by budget, and book, cancel, or extend a stay in a few taps.",
     role: "Team Project · Hotels NG",
+    orgLabel: "Hotels NG",
+    orgUrl: "https://hotels.ng/",
     period: "2022 - 2023",
     featured: false,
     metrics: [{ value: "10k+", label: "downloads" }],
@@ -494,6 +527,8 @@ export const projects: readonly Project[] = [
     description:
       "Co-built a multi-form-factor, flavoured, offline-first app that helps individuals and businesses record transactions accurately, handle payments, and generate professional receipts. SQLite for storage, Stacked + MVVM.",
     role: "Team Project · Hotels NG",
+    orgLabel: "Hotels NG",
+    orgUrl: "https://hotels.ng/",
     period: "2023",
     featured: false,
     metrics: [],
@@ -533,6 +568,8 @@ export const projects: readonly Project[] = [
     description:
       "A modern business communication platform that brings workspace collaboration into a single app. Built with my HNGi8 team in Flutter (Stacked + MVVM). I was a repo maintainer during the internship and the Flutter mobile team lead afterwards.",
     role: "Group Project · HNGi8 Remote Internship",
+    orgLabel: "HNGi8 Remote Internship",
+    orgUrl: "https://hng.tech/",
     period: "Aug 2021 - Oct 2021",
     featured: false,
     metrics: [],
@@ -661,6 +698,7 @@ export const skills: readonly SkillGroup[] = [
       { name: "Contentful CMS", note: "1y" },
       { name: "Algolia", note: "1y" },
       { name: "Dynamic Yield" },
+      { name: "BazaarVoice" },
       { name: "SQLite", note: "2y" },
       { name: "Hive" },
     ],
@@ -742,6 +780,12 @@ export const honours: readonly Honour[] = [
     detail:
       "Recognised for outstanding contribution across 4 departments and 400+ students in the Student Work Experience Program (2018).",
   },
+  {
+    id: "featuremind-shoutout",
+    title: "Featured by Feature/mind",
+    detail: "Called out in Feature/mind's LinkedIn announcement celebrating the Nahdi launch.",
+    href: "https://www.linkedin.com/posts/girgingokhan_we-are-excited-to-share-that-featuremind-activity-7315376470405660672-jVh9?utm_source=share&utm_medium=member_desktop&rcm=ACoAACqxAE0BK5BCZRingVlhbHNtfRTwLfRhLEw",
+  },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -801,9 +845,9 @@ export const sections = {
     index: "07",
     id: "honours",
     nav: false,
-    title: "Honours",
+    title: "Honours & Honourable Mentions",
     prompt: "~/honours",
-    intro: "A couple of receipts, for the skim-readers.",
+    intro: "A few receipts, for the skim-readers.",
   },
   contact: {
     index: "08",
