@@ -435,7 +435,10 @@ export const projects: readonly Project[] = [
     featured: false,
     metrics: [],
     stack: ["Flutter", "Dart", "Riverpod", "Clean Architecture"],
-    links: [{ label: "Play Store", href: "https://play.google.com/store/apps/details?id=com.biudahq.mobile.app", type: "play" }],
+    links: [
+      { label: "Play Store", href: "https://play.google.com/store/apps/details?id=com.biudahq.mobile.app", type: "play" },
+      { label: "Website", href: "https://biudahq.com", type: "site" },
+    ],
   },
   {
     id: "nahdi",
@@ -465,6 +468,8 @@ export const projects: readonly Project[] = [
     screenshots: [
       { src: "/projects/nahdi/splash.jpg", alt: "Nahdi app splash screen" },
       { src: "/projects/nahdi/home.jpg", alt: "Nahdi app home screen with sun care promotions and category shortcuts" },
+      { src: "/projects/nahdi/search-results.jpg", alt: "Nahdi search results for Omega 3 supplements" },
+      { src: "/projects/nahdi/product-detail.jpg", alt: "Nahdi product detail page for a CeraVe cleanser" },
     ],
   },
   {
@@ -486,6 +491,12 @@ export const projects: readonly Project[] = [
     ],
     stack: ["Flutter", "Dart", "Rust", "NOSTR", "MLS", "Cryptography"],
     links: [{ label: "Marmot Protocol", href: "https://github.com/marmot-protocol/whitenoise-archive/releases", type: "repo" }],
+    screenshots: [
+      { src: "/projects/white-noise/splash.jpg", alt: "White Noise splash screen with login and sign up" },
+      { src: "/projects/white-noise/profile-ready.jpg", alt: "White Noise profile ready screen prompting the user to search for friends" },
+      { src: "/projects/white-noise/chat.jpg", alt: "White Noise chat conversation screen" },
+      { src: "/projects/white-noise/settings.jpg", alt: "White Noise settings screen showing profile keys and network relays" },
+    ],
   },
   {
     id: "teesas-education",
@@ -503,6 +514,11 @@ export const projects: readonly Project[] = [
     links: [
       { label: "Play Store", href: "https://play.google.com/store/apps/details?id=app.teesas", type: "play" },
       { label: "App Store", href: "https://apps.apple.com/us/app/teesas-education-learn/id1595847520", type: "appstore" },
+    ],
+    screenshots: [
+      { src: "/projects/teesas-education/splash.jpg", alt: "Teesas Education app splash screen" },
+      { src: "/projects/teesas-education/home.jpg", alt: "Teesas Education home screen with video tutorials and assessments for UTME (JAMB)" },
+      { src: "/projects/teesas-education/lesson.jpg", alt: "Teesas Education video lesson screen on Soil and Soil Conservation" },
     ],
   },
   {
@@ -679,6 +695,7 @@ export const skills: readonly SkillGroup[] = [
       { name: "Responsive / multi form-factor" },
       { name: "Offline-first" },
       { name: "Localisation" },
+      { name: "Theming" },
     ],
   },
   {
