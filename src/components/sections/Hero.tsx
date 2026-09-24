@@ -40,7 +40,7 @@ export function Hero() {
           <div>
             <Reveal y={10}>
               <p className="font-mono text-sm">
-                <span className="text-primary">muhammad@qaasim</span>
+                <span className="text-primary">qaasim</span>
                 <span className="text-muted">:</span>
                 <span className="text-accent">~</span>
                 <span className="text-muted">$ ./intro --mobile --web</span>

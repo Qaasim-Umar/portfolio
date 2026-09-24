@@ -24,7 +24,7 @@ export default function OpenGraphImage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", color: "#6df0a1", fontSize: 30 }}>
-          {"> muhammad@qaasim:~$ ./hello"}
+          {"> qaasim:~$ ./hello"}
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>

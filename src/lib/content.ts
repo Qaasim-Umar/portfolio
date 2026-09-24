@@ -198,11 +198,11 @@ export interface SiteConfig {
 
 export const site: SiteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://quwaysim.vercel.app",
-  title: "Muhammad Qaasim · Software Engineer · Mobile & Web (Flutter, Next.js)",
+  title: "Qaasim · Software Engineer · Mobile & Web (Flutter, Next.js)",
   description:
     "Software engineer building mobile and web products with Flutter and Next.js: pixel-perfect apps for 1M+ users, decentralized messaging over NOSTR, and school platforms on the web.",
   keywords: [
-    "Muhammad Qaasim",
+    "Qaasim",
     "Flutter developer",
     "Next.js developer",
     "Mobile software engineer",
@@ -216,7 +216,7 @@ export const site: SiteConfig = {
     "Clean Architecture",
   ],
   locale: "en_US",
-  ogImageAlt: "Muhammad Qaasim · Software Engineer · Mobile & Web (Flutter, Next.js)",
+  ogImageAlt: "Qaasim · Software Engineer · Mobile & Web (Flutter, Next.js)",
 };
 
 /* -------------------------------------------------------------------------- */
@@ -224,16 +224,16 @@ export const site: SiteConfig = {
 /* -------------------------------------------------------------------------- */
 
 export const profile: Profile = {
-  name: "Muhammad Qaasim",
-  firstName: "Muhammad",
-  lastName: "Qaasim",
+  name: "Qaasim",
+  firstName: "Qaasim",
+  lastName: "",
   role: "Software Engineer · Mobile & Web (Flutter, Next.js)",
   roleShort: "Mobile & Web Engineer",
   location: "Building for everywhere",
   available: "Open to mobile & web roles",
   email: "qaasim405@gmail.com",
   studioEmail: "uqstudio69@gmail.com",
-  headline: ["I build mobile apps", "and web products", "that ship to millions."],
+  headline: ["Building\u00A0apps", "that ship to millions."],
   tagline:
     "Flutter and Next.js, from pixel to protocol: a CMS-driven app with 1M+ users, privacy-first messaging over NOSTR, and school platforms that run in the browser.",
   bio: [
@@ -249,14 +249,14 @@ export const profile: Profile = {
  */
 export const portrait: PortraitInfo = {
   src: "/qaasim.jpg",
-  alt: "Muhammad Qaasim, smiling, at the Africa Bitcoin Conference",
+  alt: "Qaasim, smiling, at the Africa Bitcoin Conference",
   title: "~/qaasim.jpg",
   caption: "// Africa Bitcoin Conference — talking NOSTR, mostly",
 };
 
 /** Faux shell output rendered in the hero's terminal panel. */
 export const heroTerminal: readonly TerminalLine[] = [
-  { command: "whoami", output: "muhammad qaasim, software engineer · mobile & web" },
+  { command: "whoami", output: "qaasim, software engineer · mobile & web" },
   { command: "cat stack.txt", output: "flutter · dart · next.js · react · typescript · rust" },
   { command: "uptime", output: "5+ yrs shipping software · 1M+ users reached" },
   { command: "echo $STATUS", output: "open to mobile & web roles" },

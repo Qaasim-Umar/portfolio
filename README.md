@@ -1,4 +1,4 @@
-# Muhammad Qaasim — Portfolio
+# Qaasim — Portfolio
 
 A personal portfolio for a senior mobile (Flutter) engineer, built in the
 **“Terminal Craft”** visual direction: dark-first, mono-forward, asymmetric
