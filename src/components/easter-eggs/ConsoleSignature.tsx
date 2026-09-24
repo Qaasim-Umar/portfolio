@@ -11,7 +11,7 @@ export function ConsoleSignature() {
     console.log("%c> whoami", accent);
     console.log(`%c${profile.name} · ${profile.role}`, "font-family:monospace;font-size:12px");
     console.log(
-      "%cInspecting the source? Respect. If you build delightful mobile things, let's talk:",
+      "%cInspecting the source? Respect. If you build delightful mobile or web things, let's talk:",
       muted,
     );
     console.log(`%c${profile.email}`, accent);

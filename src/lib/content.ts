@@ -127,6 +127,16 @@ export interface ProjectScreenshot {
   /** Path under /public, e.g. "/projects/nahdi/home.jpg". */
   readonly src: string;
   readonly alt: string;
+  /** Device frame: "phone" (portrait, default) or "browser" (16:10 desktop). */
+  readonly frame?: "phone" | "browser";
+}
+
+export type ProjectPlatform = "mobile" | "web";
+
+export interface PlatformMeta {
+  readonly key: ProjectPlatform;
+  /** Mono sub-heading shown above each platform group. */
+  readonly label: string;
 }
 
 export interface Project {
@@ -138,6 +148,8 @@ export interface Project {
   readonly period: string;
   readonly status?: string;
   readonly featured: boolean;
+  /** Which group the project renders under in Featured Work and Projects. */
+  readonly platform: ProjectPlatform;
   readonly metrics: readonly ProjectMetric[];
   readonly stack: readonly string[];
   readonly links: readonly ProjectLink[];
@@ -198,21 +210,25 @@ export interface SiteConfig {
 
 export const site: SiteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://quwaysim.vercel.app",
-  title: "Muhammad Qaasim · Senior Mobile Software Engineer (Flutter)",
+  title: "Muhammad Qaasim · Software Engineer · Mobile & Web (Flutter, Next.js)",
   description:
-    "Senior mobile software engineer specialising in Flutter. I build pixel-perfect apps for 1M+ users and decentralized, privacy-first messaging over NOSTR.",
+    "Software engineer building mobile and web products with Flutter and Next.js: pixel-perfect apps for 1M+ users, decentralized messaging over NOSTR, and school platforms on the web.",
   keywords: [
     "Muhammad Qaasim",
     "Flutter developer",
+    "Next.js developer",
     "Mobile software engineer",
+    "Web developer",
     "Dart",
+    "React",
+    "TypeScript",
     "NOSTR",
     "Rust",
     "Riverpod",
     "Clean Architecture",
   ],
   locale: "en_US",
-  ogImageAlt: "Muhammad Qaasim · Senior Mobile Software Engineer (Flutter)",
+  ogImageAlt: "Muhammad Qaasim · Software Engineer · Mobile & Web (Flutter, Next.js)",
 };
 
 /* -------------------------------------------------------------------------- */
@@ -223,18 +239,18 @@ export const profile: Profile = {
   name: "Muhammad Qaasim",
   firstName: "Muhammad",
   lastName: "Qaasim",
-  role: "Senior Mobile Software Engineer (Flutter)",
-  roleShort: "Senior Flutter Engineer",
+  role: "Software Engineer · Mobile & Web (Flutter, Next.js)",
+  roleShort: "Mobile & Web Engineer",
   location: "Building for everywhere",
-  available: "Open to senior mobile roles",
+  available: "Open to mobile & web roles",
   email: "qaasim405@gmail.com",
   resumeUrl: "/resume.pdf",
-  headline: ["I build mobile apps", "that ship to millions", "and never miss a frame."],
+  headline: ["I build mobile apps", "and web products", "that ship to millions."],
   tagline:
-    "Flutter from pixel to protocol, from a CMS-driven app with 1M+ users to decentralized, privacy-first messaging over NOSTR.",
+    "Flutter and Next.js, from pixel to protocol: a CMS-driven app with 1M+ users, privacy-first messaging over NOSTR, and school platforms that run in the browser.",
   bio: [
-    "I'm a senior mobile engineer who has spent 4+ years turning Flutter into production software people actually keep on their home screen. Most recently I co-built Nahdi, a highly dynamic, localised commerce app serving over a million users, and contributed to White Noise, a decentralized, privacy-first messenger built on NOSTR with a Rust MLS crate doing the cryptographic heavy lifting.",
-    "I care about the unglamorous parts: clean architecture, offline-first behaviour, pixel-perfect localisation, and state management that a teammate can read at 2am without crying. Stacked, Riverpod, MVVM, Clean Architecture, I've shipped them all, and I have opinions about when each one earns its keep.",
+    "I'm a software engineer who has spent 4+ years shipping production software people actually use, on their home screens and in their browsers. On mobile, I co-built Nahdi, a highly dynamic, localised commerce app serving over a million users, and contributed to White Noise, a decentralized, privacy-first messenger built on NOSTR with a Rust MLS crate doing the cryptographic heavy lifting. On the web, I design and build Next.js products through UQ Studio, including Scholaris, a school management platform, and Assessly, an AI-powered exam platform.",
+    "I care about the unglamorous parts: clean architecture, offline-first behaviour, pixel-perfect localisation, fast pages, and state management that a teammate can read at 2am without crying. Riverpod, Stacked, and Clean Architecture on Flutter; Next.js, React, and TypeScript on the web. I've shipped them all, and I have opinions about when each one earns its keep.",
     "Computer Engineering grad from FUT Minna. Somewhere along the way I led Android communities, ran bootcamps that grew a campus dev scene from almost nothing to 300+, and never quite kicked the open-source habit.",
   ],
 };
@@ -252,10 +268,10 @@ export const portrait: PortraitInfo = {
 
 /** Faux shell output rendered in the hero's terminal panel. */
 export const heroTerminal: readonly TerminalLine[] = [
-  { command: "whoami", output: "muhammad qaasim, senior flutter engineer" },
-  { command: "cat stack.txt", output: "flutter · dart · riverpod · rust · nostr" },
-  { command: "uptime", output: "4+ yrs shipping mobile · 1M+ users reached" },
-  { command: "echo $STATUS", output: "open to senior mobile roles" },
+  { command: "whoami", output: "muhammad qaasim, software engineer · mobile & web" },
+  { command: "cat stack.txt", output: "flutter · dart · next.js · react · typescript · rust" },
+  { command: "uptime", output: "4+ yrs shipping software · 1M+ users reached" },
+  { command: "echo $STATUS", output: "open to mobile & web roles" },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -298,7 +314,7 @@ export const socials: readonly SocialLink[] = [
 /* -------------------------------------------------------------------------- */
 
 export const stats: readonly Stat[] = [
-  { value: "4+ yrs", label: "shipping mobile" },
+  { value: "4+ yrs", label: "shipping software" },
   { value: "1M+", label: "users reached" },
   { value: "10+", label: "products shipped" },
   { value: "300+", label: "devs mentored" },
@@ -310,14 +326,14 @@ export const stats: readonly Stat[] = [
 
 export const experience: readonly ExperienceItem[] = [
   {
-    id: "teesas",
+    id: "uq-studio",
     role: "Software Engineer",
-    org: "Teesas",
-    orgUrl: "https://teesas.com/",
-    period: "Jan 2026 - Present",
+    org: "UQ Studio",
+    orgUrl: "https://uqstudio.vercel.app/",
+    period: "2026 - Present",
     summary:
-      "Building educational mobile apps for Teesas, including Teesas Education, a gamified learning app for Nigerian students preparing for JAMB, WAEC, and NECO.",
-    tags: ["Flutter", "Dart", "MobX", "Clean Architecture"],
+      "Designing and building web and mobile products for clients, including Scholaris (school management on web + Flutter), Assessly (AI-powered CBT platform), EcomWords Lab, and Al Baahith Academy.",
+    tags: ["Next.js", "React", "TypeScript", "Flutter", "UI/UX"],
     current: true,
   },
   {
@@ -425,6 +441,90 @@ export const education: Education = {
 
 export const projects: readonly Project[] = [
   {
+    id: "scholaris",
+    name: "Scholaris",
+    tagline: "School management that turns chaos into clarity.",
+    description:
+      "Designed and built a school management platform that brings administration, attendance, CBT exams, school finance, and academic operations into one clear product for teachers, parents, and school leaders. It ships on the web and as a trilingual Flutter app with multi-school access.",
+    role: "Studio Project · UQ Studio",
+    orgLabel: "UQ Studio",
+    orgUrl: "https://uqstudio.vercel.app/",
+    period: "2026",
+    status: "Live · web + mobile",
+    featured: true,
+    platform: "web",
+    metrics: [
+      { value: "Web + App", label: "one product" },
+      { value: "3", label: "languages" },
+      { value: "Multi", label: "school tenancy" },
+    ],
+    stack: ["Next.js", "React", "Flutter", "UI/UX Design"],
+    links: [
+      { label: "scholarishq.com", href: "https://scholarishq.com", type: "site" },
+      { label: "Play Store", href: "https://play.google.com/store/apps/details?id=com.scholarishq.mobile", type: "play" },
+    ],
+    screenshots: [
+      { src: "/projects/scholaris/home.jpg", alt: "Scholaris homepage: the school platform that turns chaos into clarity", frame: "browser" },
+    ],
+  },
+  {
+    id: "assessly",
+    name: "Assessly",
+    tagline: "AI-powered CBT practice and assessments.",
+    description:
+      "Designed and built an AI-powered CBT platform for Nigerian students and educators. Students practise JAMB, WAEC, NECO, and BECE past questions with hints and explanations, no account needed; schools create exams and manage classes, pupils, and results.",
+    role: "Studio Project · UQ Studio",
+    orgLabel: "UQ Studio",
+    orgUrl: "https://uqstudio.vercel.app/",
+    period: "2026",
+    status: "Live",
+    featured: true,
+    platform: "web",
+    metrics: [
+      { value: "5", label: "practice modes" },
+      { value: "4", label: "exam boards" },
+      { value: "AI", label: "hints & explanations" },
+    ],
+    stack: ["Next.js", "React", "AI Integration", "Product Design"],
+    links: [{ label: "assessly.ng", href: "https://assessly.ng", type: "site" }],
+    screenshots: [
+      { src: "/projects/assessly/home.jpg", alt: "Assessly homepage with separate paths for students and educators", frame: "browser" },
+      { src: "/projects/assessly/practice.jpg", alt: "Assessly student tools: past questions by exam board, hints, and explanations", frame: "browser" },
+    ],
+  },
+  {
+    id: "ecomwords-lab",
+    name: "EcomWords Lab",
+    tagline: "A copywriting agency site built to convert.",
+    description:
+      "Designed and built a conversion-focused website that positions a specialist e-commerce copywriting agency clearly and moves brands confidently toward an enquiry.",
+    role: "Studio Project · UQ Studio",
+    orgLabel: "UQ Studio",
+    orgUrl: "https://uqstudio.vercel.app/",
+    period: "2026",
+    featured: false,
+    platform: "web",
+    metrics: [],
+    stack: ["Next.js", "React", "Web Design"],
+    links: [{ label: "ecomwordslab.com", href: "https://ecomwordslab.com", type: "site" }],
+  },
+  {
+    id: "al-baahith-academy",
+    name: "Al Baahith Academy",
+    tagline: "Quran, Arabic, and Islamic Studies, in two languages.",
+    description:
+      "Designed and built a bilingual learning platform for Quran, Arabic, and Islamic Studies that serves English- and Arabic-speaking students with equal clarity and helps parents enrol with confidence.",
+    role: "Studio Project · UQ Studio",
+    orgLabel: "UQ Studio",
+    orgUrl: "https://uqstudio.vercel.app/",
+    period: "2026",
+    featured: false,
+    platform: "web",
+    metrics: [],
+    stack: ["React", "Vite", "Bilingual UI/UX"],
+    links: [{ label: "albaahithacademy.com", href: "https://www.albaahithacademy.com", type: "site" }],
+  },
+  {
     id: "biuda",
     name: "Biuda",
     tagline: "Making tech skills fun for kids.",
@@ -435,6 +535,7 @@ export const projects: readonly Project[] = [
     orgUrl: "https://biudahq.com/",
     period: "2025",
     featured: false,
+    platform: "mobile",
     metrics: [],
     stack: ["Flutter", "Dart", "Riverpod", "Clean Architecture"],
     links: [
@@ -455,6 +556,7 @@ export const projects: readonly Project[] = [
     period: "Dec 2023 - Jun 2025",
     status: "Live · in maintenance",
     featured: true,
+    platform: "mobile",
     metrics: [
       { value: "1M+", label: "users" },
       { value: "5M+", label: "downloads" },
@@ -485,6 +587,7 @@ export const projects: readonly Project[] = [
     period: "May 2025 - Dec 2025",
     status: "Marmot Protocol",
     featured: true,
+    platform: "mobile",
     metrics: [
       { value: "NOSTR", label: "transport" },
       { value: "Rust MLS", label: "crypto core" },
@@ -510,6 +613,7 @@ export const projects: readonly Project[] = [
     orgUrl: "https://teesas.com/",
     period: "2026",
     featured: true,
+    platform: "mobile",
     metrics: [{ value: "100k+", label: "downloads" }],
     stack: ["Flutter", "Dart", "MobX", "Clean Architecture"],
     links: [
@@ -533,6 +637,7 @@ export const projects: readonly Project[] = [
     orgUrl: "https://hotels.ng/",
     period: "2022 - 2023",
     featured: false,
+    platform: "mobile",
     metrics: [{ value: "10k+", label: "downloads" }],
     stack: ["Flutter", "ChangeNotifier", "Provider"],
     links: [{ label: "Play Store", href: "https://play.google.com/store/apps/details?id=ng.hotels.booking.app", type: "play" }],
@@ -548,6 +653,7 @@ export const projects: readonly Project[] = [
     orgUrl: "https://hotels.ng/",
     period: "2023",
     featured: false,
+    platform: "mobile",
     metrics: [],
     stack: ["Flutter", "SQLite", "Stacked", "MVVM", "Offline-first"],
     links: [],
@@ -563,6 +669,7 @@ export const projects: readonly Project[] = [
     orgUrl: "https://futminna.edu.ng/",
     period: "Dec 2022 - Jun 2023",
     featured: false,
+    platform: "mobile",
     metrics: [],
     stack: ["Flutter", "Firebase", "Stacked", "MVVM", "IoT"],
     links: [],
@@ -576,6 +683,7 @@ export const projects: readonly Project[] = [
     role: "Contract",
     period: "Dec 2021 - Feb 2022",
     featured: false,
+    platform: "mobile",
     metrics: [],
     stack: ["Flutter", "Stacked", "MVVM"],
     links: [],
@@ -591,6 +699,7 @@ export const projects: readonly Project[] = [
     orgUrl: "https://hng.tech/",
     period: "Aug 2021 - Oct 2021",
     featured: false,
+    platform: "mobile",
     metrics: [],
     stack: ["Flutter", "Stacked", "MVVM"],
     links: [],
@@ -604,6 +713,7 @@ export const projects: readonly Project[] = [
     role: "Group Project · GADS 2020",
     period: "Oct 2020",
     featured: false,
+    platform: "mobile",
     metrics: [],
     stack: ["Java", "Android", "Firebase"],
     links: [],
@@ -617,6 +727,7 @@ export const projects: readonly Project[] = [
     role: "Contract",
     period: "Jul 2020",
     featured: false,
+    platform: "mobile",
     metrics: [
       { value: "4.9★", label: "Play Store" },
       { value: "100+", label: "installs" },
@@ -634,6 +745,7 @@ export const projects: readonly Project[] = [
     role: "Personal Project",
     period: "2020",
     featured: false,
+    platform: "mobile",
     metrics: [
       { value: "5.0★", label: "Play Store" },
       { value: "500+", label: "downloads" },
@@ -650,6 +762,7 @@ export const projects: readonly Project[] = [
     role: "Personal Project",
     period: "Dec 2019",
     featured: false,
+    platform: "mobile",
     metrics: [{ value: "Adopted", label: "in production" }],
     stack: ["Java", "Android", "Firebase"],
     links: [],
@@ -663,13 +776,20 @@ export const projects: readonly Project[] = [
     role: "Group Project · For fun",
     period: "Nov 2019",
     featured: false,
+    platform: "mobile",
     metrics: [],
     stack: ["Flutter"],
     links: [],
   },
 ];
 
-/** Featured highlights (Nahdi + White Noise + Teesas Education). */
+/** Platform groups, in render order, for Featured Work and Projects. */
+export const platforms: readonly PlatformMeta[] = [
+  { key: "mobile", label: "// mobile" },
+  { key: "web", label: "// web" },
+];
+
+/** Featured highlights (mobile: Nahdi, White Noise, Teesas · web: Scholaris, Assessly). */
 export const featuredProjects: readonly Project[] = projects.filter((p) => p.featured);
 /** Everything else, for the full grid. */
 export const otherProjects: readonly Project[] = projects.filter((p) => !p.featured);
@@ -683,6 +803,8 @@ export const skills: readonly SkillGroup[] = [
     label: "Languages",
     items: [
       { name: "Dart", note: "4y+" },
+      { name: "TypeScript" },
+      { name: "JavaScript" },
       { name: "Java", note: "2y" },
       { name: "Kotlin", note: "<1y" },
       { name: "Rust", note: "<1y" },
@@ -700,6 +822,19 @@ export const skills: readonly SkillGroup[] = [
       { name: "Localisation" },
       { name: "Theming" },
       { name: "Widget/Unit Testing" },
+    ],
+  },
+  {
+    label: "Web & Next.js",
+    items: [
+      { name: "Next.js" },
+      { name: "React" },
+      { name: "Tailwind CSS" },
+      { name: "Vite" },
+      { name: "Responsive web design" },
+      { name: "Bilingual / RTL UI" },
+      { name: "SEO" },
+      { name: "AI Integration" },
     ],
   },
   {
@@ -732,6 +867,7 @@ export const skills: readonly SkillGroup[] = [
       { name: "VS Code", note: "5y+" },
       { name: "PlayStore", note: "3y+" },
       { name: "AppStore", note: "1y" },
+      { name: "Vercel" },
       { name: "Codemagic" },
       { name: "Performance Profiling" },
     ],
@@ -837,7 +973,7 @@ export const sections = {
     nav: true,
     title: "Featured Work",
     prompt: "~/work --featured",
-    intro: "Three projects that earn the top of the page: a million users, zero servers to trust, and students learning smarter.",
+    intro: "Mobile apps and web products that earn the top of the page: a million users, zero servers to trust, and schools run from one dashboard.",
   },
   experience: {
     index: "03",
@@ -853,7 +989,7 @@ export const sections = {
     nav: true,
     title: "Projects",
     prompt: "~/projects",
-    intro: "The rest of the catalogue. Flutter, a lot of Java, and one robot that hated weeds.",
+    intro: "The rest of the catalogue, mobile and web. Flutter, Next.js, a lot of Java, and one robot that hated weeds.",
   },
   skills: {
     index: "05",
@@ -861,7 +997,7 @@ export const sections = {
     nav: true,
     title: "Skills",
     prompt: "~/skills --list",
-    intro: "The toolbox. Years attached where they earn the bragging rights.",
+    intro: "The toolbox, mobile and web. Years attached where they earn the bragging rights.",
   },
   community: {
     index: "06",

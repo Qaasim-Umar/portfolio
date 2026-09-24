@@ -32,7 +32,7 @@ export default function OpenGraphImage() {
             {profile.name}
           </div>
           <div style={{ display: "flex", fontSize: 36, color: "#8c9a93", marginTop: 20 }}>
-            Senior Mobile Software Engineer · Flutter
+            {profile.role}
           </div>
         </div>
 
@@ -45,7 +45,7 @@ export default function OpenGraphImage() {
             color: "#8c9a93",
           }}
         >
-          <span style={{ color: "#6df0a1" }}>1M+ users · NOSTR · Rust · Riverpod</span>
+          <span style={{ color: "#6df0a1" }}>1M+ users · Flutter · Next.js · NOSTR</span>
           <span>{host}</span>
         </div>
       </div>

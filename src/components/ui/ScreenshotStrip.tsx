@@ -13,6 +13,22 @@ function Thumbnail({
   shot: ProjectScreenshot;
   onOpen: () => void;
 }) {
+  if (shot.frame === "browser") {
+    return (
+      <button
+        type="button"
+        onClick={onOpen}
+        aria-label={`View screenshot: ${shot.alt}`}
+        className="relative w-[300px] shrink-0 cursor-zoom-in overflow-hidden rounded-lg border border-border/80 bg-bg shadow-sm transition-transform duration-300 ease-out hover:scale-[1.02] sm:w-[360px]"
+      >
+        <BrowserChrome />
+        <div className="relative aspect-[16/10]">
+          <Image src={shot.src} alt={shot.alt} fill sizes="360px" className="object-cover object-top" />
+        </div>
+      </button>
+    );
+  }
+
   return (
     <button
       type="button"
@@ -31,7 +47,18 @@ function Thumbnail({
   );
 }
 
-/** Phone-framed screenshot strip; clicking a thumbnail opens a full-size, keyboard-navigable preview. */
+/** Three-dot title bar shared by browser-framed thumbnails and previews. */
+function BrowserChrome() {
+  return (
+    <div className="flex items-center gap-1.5 border-b border-border/70 bg-surface px-3 py-2" aria-hidden>
+      <span className="h-2 w-2 rounded-full bg-accent" />
+      <span className="h-2 w-2 rounded-full bg-muted/60" />
+      <span className="h-2 w-2 rounded-full bg-primary" />
+    </div>
+  );
+}
+
+/** Phone- or browser-framed screenshot strip; clicking a thumbnail opens a full-size, keyboard-navigable preview. */
 export function ScreenshotStrip({ screenshots }: { screenshots: readonly ProjectScreenshot[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const reduceMotion = useReducedMotion();
@@ -127,20 +154,36 @@ export function ScreenshotStrip({ screenshots }: { screenshots: readonly Project
               onClick={(event) => event.stopPropagation()}
               className="flex flex-col items-center"
             >
-              <div className="relative h-[80vh] max-h-[720px] w-auto overflow-hidden rounded-[2rem] border-8 border-border/80 bg-bg shadow-2xl aspect-[9/19.5]">
-                <span
-                  className="absolute left-1/2 top-2 z-10 h-1.5 w-16 -translate-x-1/2 rounded-full bg-border/80"
-                  aria-hidden
-                />
-                <Image
-                  src={screenshots[openIndex].src}
-                  alt={screenshots[openIndex].alt}
-                  fill
-                  sizes="90vw"
-                  className="object-cover"
-                  priority
-                />
-              </div>
+              {screenshots[openIndex].frame === "browser" ? (
+                <div className="w-[min(90vw,1100px)] overflow-hidden rounded-xl border border-border/80 bg-bg shadow-2xl">
+                  <BrowserChrome />
+                  <div className="relative aspect-[16/10]">
+                    <Image
+                      src={screenshots[openIndex].src}
+                      alt={screenshots[openIndex].alt}
+                      fill
+                      sizes="90vw"
+                      className="object-cover object-top"
+                      priority
+                    />
+                  </div>
+                </div>
+              ) : (
+                <div className="relative h-[80vh] max-h-[720px] w-auto overflow-hidden rounded-[2rem] border-8 border-border/80 bg-bg shadow-2xl aspect-[9/19.5]">
+                  <span
+                    className="absolute left-1/2 top-2 z-10 h-1.5 w-16 -translate-x-1/2 rounded-full bg-border/80"
+                    aria-hidden
+                  />
+                  <Image
+                    src={screenshots[openIndex].src}
+                    alt={screenshots[openIndex].alt}
+                    fill
+                    sizes="90vw"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              )}
               {screenshots.length > 1 ? (
                 <p className="mt-4 font-mono text-xs text-muted">
                   {openIndex + 1} / {screenshots.length}

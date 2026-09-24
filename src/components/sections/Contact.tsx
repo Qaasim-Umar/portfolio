@@ -15,7 +15,7 @@ export function Contact() {
             </p>
             <p className="mt-3 text-muted">
               <span className="font-mono text-primary">●</span> {profile.available} and always
-              happy to talk Flutter, NOSTR, or why your state management is fine, actually.
+              happy to talk Flutter, Next.js, NOSTR, or why your state management is fine, actually.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a

@@ -43,7 +43,7 @@ export function Hero() {
                 <span className="text-primary">muhammad@qaasim</span>
                 <span className="text-muted">:</span>
                 <span className="text-accent">~</span>
-                <span className="text-muted">$ ./intro --senior</span>
+                <span className="text-muted">$ ./intro --mobile --web</span>
               </p>
             </Reveal>
 
