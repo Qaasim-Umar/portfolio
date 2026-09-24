@@ -39,15 +39,14 @@ site. Edit the exported objects to change anything:
 
 | Export | Controls |
 | --- | --- |
-| `profile` | Name, role, hero headline, tagline, bio, email, résumé path |
+| `profile` | Name, role, hero headline, tagline, bio, emails |
 | `heroTerminal` | The faux shell output in the hero panel |
-| `socials` | GitHub / X / LinkedIn / email links |
+| `socials` | GitHub / email links |
 | `stats` | The “1M+ users” stat strip |
 | `experience` | The timeline entries |
 | `education` | The education card |
 | `projects` | Every project (set `featured: true` to promote it to Featured Work) |
 | `skills` | Grouped skill pills |
-| `leadership` | Community / leadership entries |
 | `honours` | Awards |
 | `sections` | Section titles, ordering indices, nav labels, and the witty intros |
 | `site` | SEO title, description, keywords, production URL |
@@ -59,8 +58,7 @@ is missing or mistyped.
 
 Social and project links live in `socials` and `projects` in
 `src/lib/content.ts`. The `kitaabul-adhkaar` project still points at a generic
-Play Store URL — update it if it has a dedicated listing. The résumé is served
-from `public/resume.pdf` (change `profile.resumeUrl` to point elsewhere).
+Play Store URL — update it if it has a dedicated listing.
 
 ---
 

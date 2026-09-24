@@ -16,13 +16,11 @@
 
 export type IconName =
   | "github"
-  | "linkedin"
   | "mail"
   | "phone"
   | "external"
   | "arrow"
-  | "globe"
-  | "x";
+  | "globe";
 
 export interface SocialLink {
   /** Stable key, used for React keys + icon lookup. */
@@ -64,7 +62,10 @@ export interface Profile {
   readonly roleShort: string;
   readonly location: string;
   readonly available: string;
+  /** Primary contact email; used by the hero, nav, and console signature. */
   readonly email: string;
+  /** Studio email, listed alongside the primary one in Contact. */
+  readonly studioEmail: string;
   /** Hero headline lines — rendered with the accent word emphasised. */
   readonly headline: readonly string[];
   /** Short hero sub-line with a wink. */
@@ -168,14 +169,6 @@ export interface SkillGroup {
   readonly items: readonly SkillItem[];
 }
 
-export interface LeadershipItem {
-  readonly id: string;
-  readonly role: string;
-  readonly org: string;
-  readonly period?: string;
-  readonly description: string;
-}
-
 export interface Honour {
   readonly id: string;
   readonly title: string;
@@ -239,11 +232,12 @@ export const profile: Profile = {
   location: "Building for everywhere",
   available: "Open to mobile & web roles",
   email: "qaasim405@gmail.com",
+  studioEmail: "uqstudio69@gmail.com",
   headline: ["I build mobile apps", "and web products", "that ship to millions."],
   tagline:
     "Flutter and Next.js, from pixel to protocol: a CMS-driven app with 1M+ users, privacy-first messaging over NOSTR, and school platforms that run in the browser.",
   bio: [
-    "I'm a software engineer who has spent 4+ years shipping production software people actually use, on their home screens and in their browsers. On mobile, I co-built Nahdi, a highly dynamic, localised commerce app serving over a million users, and contributed to White Noise, a decentralized, privacy-first messenger built on NOSTR with a Rust MLS crate doing the cryptographic heavy lifting. On the web, I design and build Next.js products through UQ Studio, including Scholaris, a school management platform, and Assessly, an AI-powered exam platform.",
+    "I'm a software engineer who has spent 5+ years shipping production software people actually use, on their home screens and in their browsers. On mobile, I co-built Nahdi, a highly dynamic, localised commerce app serving over a million users, and contributed to White Noise, a decentralized, privacy-first messenger built on NOSTR with a Rust MLS crate doing the cryptographic heavy lifting. On the web, I design and build Next.js products through UQ Studio, including Scholaris, a school management platform, and Assessly, an AI-powered exam platform.",
     "I care about the unglamorous parts: clean architecture, offline-first behaviour, pixel-perfect localisation, fast pages, and state management that a teammate can read at 2am without crying. Riverpod, Stacked, and Clean Architecture on Flutter; Next.js, React, and TypeScript on the web. I've shipped them all, and I have opinions about when each one earns its keep.",
     "Computer Engineering grad from FUT Minna. Somewhere along the way I led Android communities, ran bootcamps that grew a campus dev scene from almost nothing to 300+, and never quite kicked the open-source habit.",
   ],
@@ -264,7 +258,7 @@ export const portrait: PortraitInfo = {
 export const heroTerminal: readonly TerminalLine[] = [
   { command: "whoami", output: "muhammad qaasim, software engineer · mobile & web" },
   { command: "cat stack.txt", output: "flutter · dart · next.js · react · typescript · rust" },
-  { command: "uptime", output: "4+ yrs shipping software · 1M+ users reached" },
+  { command: "uptime", output: "5+ yrs shipping software · 1M+ users reached" },
   { command: "echo $STATUS", output: "open to mobile & web roles" },
 ];
 
@@ -281,24 +275,17 @@ export const socials: readonly SocialLink[] = [
     icon: "github",
   },
   {
-    name: "x",
-    label: "X",
-    href: "https://x.com/quwaysim",
-    handle: "@quwaysim",
-    icon: "x",
-  },
-  {
-    name: "linkedin",
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/quwaysim",
-    handle: "quwaysim",
-    icon: "linkedin",
-  },
-  {
     name: "email",
     label: "Email",
     href: "mailto:qaasim405@gmail.com",
     handle: "qaasim405@gmail.com",
+    icon: "mail",
+  },
+  {
+    name: "studio-email",
+    label: "Email (UQ Studio)",
+    href: "mailto:uqstudio69@gmail.com",
+    handle: "uqstudio69@gmail.com",
     icon: "mail",
   },
 ];
@@ -308,7 +295,7 @@ export const socials: readonly SocialLink[] = [
 /* -------------------------------------------------------------------------- */
 
 export const stats: readonly Stat[] = [
-  { value: "4+ yrs", label: "shipping software" },
+  { value: "5+ yrs", label: "shipping software" },
   { value: "1M+", label: "users reached" },
   { value: "10+", label: "products shipped" },
   { value: "300+", label: "devs mentored" },
@@ -843,6 +830,8 @@ export const skills: readonly SkillGroup[] = [
   {
     label: "Backend & Services",
     items: [
+      { name: "Node.js" },
+      { name: "Express" },
       { name: "Firebase" },
       { name: "Supabase" },
       { name: "Contentful CMS" },
@@ -872,48 +861,6 @@ export const skills: readonly SkillGroup[] = [
       { name: "NOSTR" },
       { name: "Marmot" },
     ],
-  },
-];
-
-/* -------------------------------------------------------------------------- */
-/*  Leadership & community                                                     */
-/* -------------------------------------------------------------------------- */
-
-export const leadership: readonly LeadershipItem[] = [
-  {
-    id: "gdsc",
-    role: "Android Lead",
-    org: "Google Developer Student Clubs · FUT Minna",
-    period: "2019 - 2021",
-    description:
-      "Core team for the school's first-ever GDSC chapter, two consecutive terms. Led the Android track.",
-  },
-  {
-    id: "i4g",
-    role: "Android Lead",
-    org: "Ingressive for Good · FUT Minna",
-    period: "2020 - 2021",
-    description:
-      "Core team for the first-ever I4G chapter on campus, leading Android.",
-  },
-  {
-    id: "bootcamps",
-    role: "Bootcamp Facilitator",
-    org: "GDSC (Android) & I4G (Flutter)",
-    description:
-      "Ran bootcamps that grew campus Android devs from almost nothing to 30+, and the wider on-campus dev community to 300+ strong.",
-  },
-  {
-    id: "futmx",
-    role: "Core Team Member",
-    org: "FUTMx Dev Circle",
-    description: "Helped steer one of the campus's developer circles.",
-  },
-  {
-    id: "gdg",
-    role: "Active Member",
-    org: "GDG Minna · GDG Ilorin",
-    description: "Regular at the local Google Developer Group communities.",
   },
 ];
 
@@ -993,16 +940,8 @@ export const sections = {
     prompt: "~/skills --list",
     intro: "The toolbox, mobile and web. Grouped by where it gets used.",
   },
-  community: {
-    index: "06",
-    id: "community",
-    nav: true,
-    title: "Community",
-    prompt: "~/community",
-    intro: "Leading Android tracks and turning a quiet campus into 300+ developers.",
-  },
   honours: {
-    index: "07",
+    index: "06",
     id: "honours",
     nav: false,
     title: "Honours & Honourable Mentions",
@@ -1010,7 +949,7 @@ export const sections = {
     intro: "A few receipts, for the skim-readers.",
   },
   contact: {
-    index: "08",
+    index: "07",
     id: "contact",
     nav: true,
     title: "Contact",

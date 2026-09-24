@@ -15,6 +15,7 @@ export function ConsoleSignature() {
       muted,
     );
     console.log(`%c${profile.email}`, accent);
+    console.log(`%c${profile.studioEmail}`, accent);
   }, []);
 
   return null;
