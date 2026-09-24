@@ -85,13 +85,6 @@ export function Hero() {
                   <Icon name="mail" className="h-4 w-4" />
                   Email me
                 </a>
-                <a
-                  href={profile.resumeUrl}
-                  className="inline-flex items-center gap-2 rounded-md px-4 py-2.5 font-mono text-sm text-muted transition-colors duration-200 hover:text-primary"
-                >
-                  <Icon name="download" className="h-4 w-4" />
-                  Résumé
-                </a>
               </div>
             </Reveal>
 

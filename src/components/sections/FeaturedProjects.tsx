@@ -5,7 +5,7 @@ import { Tag } from "@/components/ui/Tag";
 import { Icon, type IconKey } from "@/components/icons/Icon";
 import { ProjectScreenshots } from "@/components/ui/ProjectScreenshots";
 import { RoleLine } from "@/components/ui/RoleLine";
-import { PlatformHeading } from "@/components/ui/PlatformHeading";
+import { PlatformTabs } from "@/components/ui/PlatformTabs";
 
 const LINK_ICON: Record<ProjectLinkType, IconKey> = {
   play: "play",
@@ -24,9 +24,9 @@ function FeaturedCard({ project }: { project: Project }) {
             {project.status ? <span className="text-primary">{project.status}</span> : null}
             <span className="text-muted">{project.period}</span>
           </div>
-          <h4 className="mt-2 font-mono text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h3 className="mt-2 font-mono text-2xl font-semibold tracking-tight sm:text-3xl">
             {project.name}
-          </h4>
+          </h3>
           <p className="mt-1 text-lg text-text">{project.tagline}</p>
           <p className="mt-4 max-w-prose text-pretty leading-relaxed text-muted">
             {project.description}
@@ -89,26 +89,29 @@ function FeaturedCard({ project }: { project: Project }) {
 }
 
 export function FeaturedProjects() {
+  const panels = platforms
+    .map((platform) => {
+      const group = featuredProjects.filter((project) => project.platform === platform.key);
+      return {
+        key: platform.key,
+        label: platform.label,
+        count: group.length,
+        content: (
+          <div className="flex flex-col gap-6">
+            {group.map((project, index) => (
+              <Reveal key={project.id} delay={index * 0.08}>
+                <FeaturedCard project={project} />
+              </Reveal>
+            ))}
+          </div>
+        ),
+      };
+    })
+    .filter((panel) => panel.count > 0);
+
   return (
     <Section section={sections.work}>
-      <div className="flex flex-col gap-12">
-        {platforms.map((platform) => {
-          const group = featuredProjects.filter((project) => project.platform === platform.key);
-          if (group.length === 0) return null;
-          return (
-            <div key={platform.key}>
-              <PlatformHeading label={platform.label} />
-              <div className="flex flex-col gap-6">
-                {group.map((project, index) => (
-                  <Reveal key={project.id} delay={index * 0.08}>
-                    <FeaturedCard project={project} />
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <PlatformTabs panels={panels} label="Featured work by platform" />
     </Section>
   );
 }

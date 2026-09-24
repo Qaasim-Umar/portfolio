@@ -25,13 +25,6 @@ export function Contact() {
                 <Icon name="mail" className="h-4 w-4" />
                 {profile.email}
               </a>
-              <a
-                href={profile.resumeUrl}
-                className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-2.5 font-mono text-sm text-text transition-colors duration-200 hover:border-primary hover:text-primary"
-              >
-                <Icon name="download" className="h-4 w-4" />
-                Résumé
-              </a>
             </div>
           </div>
         </Reveal>

@@ -20,7 +20,6 @@ export function Skills() {
                   className="inline-flex items-center rounded border border-border bg-surface px-2.5 py-1 font-mono text-xs text-text"
                 >
                   {item.name}
-                  {item.note ? <span className="ml-1.5 text-primary/70">{item.note}</span> : null}
                 </li>
               ))}
             </ul>

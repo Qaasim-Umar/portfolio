@@ -4,7 +4,7 @@ import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { Tag } from "@/components/ui/Tag";
 import { Icon, type IconKey } from "@/components/icons/Icon";
 import { RoleLine } from "@/components/ui/RoleLine";
-import { PlatformHeading } from "@/components/ui/PlatformHeading";
+import { PlatformTabs } from "@/components/ui/PlatformTabs";
 
 const LINK_ICON: Record<ProjectLinkType, IconKey> = {
   play: "play",
@@ -22,7 +22,7 @@ function ProjectCard({ project }: { project: Project }) {
         <span className="text-muted">{project.period}</span>
       </div>
 
-      <h4 className="mt-3 font-mono text-lg font-semibold tracking-tight">{project.name}</h4>
+      <h3 className="mt-3 font-mono text-lg font-semibold tracking-tight">{project.name}</h3>
       <p className="mt-1 text-sm text-text">{project.tagline}</p>
       <p className="mt-2 text-pretty text-sm leading-relaxed text-muted">{project.description}</p>
       <p className="mt-2 font-mono text-xs text-muted">
@@ -70,26 +70,29 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export function ProjectGrid() {
+  const panels = platforms
+    .map((platform) => {
+      const group = otherProjects.filter((project) => project.platform === platform.key);
+      return {
+        key: platform.key,
+        label: platform.label,
+        count: group.length,
+        content: (
+          <Stagger as="ul" className="grid gap-4 sm:grid-cols-2" stagger={0.06}>
+            {group.map((project) => (
+              <StaggerItem as="li" key={project.id} className="h-full">
+                <ProjectCard project={project} />
+              </StaggerItem>
+            ))}
+          </Stagger>
+        ),
+      };
+    })
+    .filter((panel) => panel.count > 0);
+
   return (
     <Section section={sections.projects}>
-      <div className="flex flex-col gap-12">
-        {platforms.map((platform) => {
-          const group = otherProjects.filter((project) => project.platform === platform.key);
-          if (group.length === 0) return null;
-          return (
-            <div key={platform.key}>
-              <PlatformHeading label={platform.label} />
-              <Stagger as="ul" className="grid gap-4 sm:grid-cols-2" stagger={0.06}>
-                {group.map((project) => (
-                  <StaggerItem as="li" key={project.id} className="h-full">
-                    <ProjectCard project={project} />
-                  </StaggerItem>
-                ))}
-              </Stagger>
-            </div>
-          );
-        })}
-      </div>
+      <PlatformTabs panels={panels} label="Projects by platform" />
     </Section>
   );
 }

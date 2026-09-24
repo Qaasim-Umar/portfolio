@@ -21,7 +21,6 @@ export type IconName =
   | "phone"
   | "external"
   | "arrow"
-  | "download"
   | "globe"
   | "x";
 
@@ -66,8 +65,6 @@ export interface Profile {
   readonly location: string;
   readonly available: string;
   readonly email: string;
-  /** Drop your résumé at `public/resume.pdf` to enable the download button. */
-  readonly resumeUrl: string;
   /** Hero headline lines — rendered with the accent word emphasised. */
   readonly headline: readonly string[];
   /** Short hero sub-line with a wink. */
@@ -135,7 +132,7 @@ export type ProjectPlatform = "mobile" | "web";
 
 export interface PlatformMeta {
   readonly key: ProjectPlatform;
-  /** Mono sub-heading shown above each platform group. */
+  /** Tab label in the Featured Work and Projects switchers. */
   readonly label: string;
 }
 
@@ -164,8 +161,6 @@ export interface Project {
 
 export interface SkillItem {
   readonly name: string;
-  /** Optional experience note, e.g. "5y+". */
-  readonly note?: string;
 }
 
 export interface SkillGroup {
@@ -244,7 +239,6 @@ export const profile: Profile = {
   location: "Building for everywhere",
   available: "Open to mobile & web roles",
   email: "qaasim405@gmail.com",
-  resumeUrl: "/resume.pdf",
   headline: ["I build mobile apps", "and web products", "that ship to millions."],
   tagline:
     "Flutter and Next.js, from pixel to protocol: a CMS-driven app with 1M+ users, privacy-first messaging over NOSTR, and school platforms that run in the browser.",
@@ -330,7 +324,7 @@ export const experience: readonly ExperienceItem[] = [
     role: "Software Engineer",
     org: "UQ Studio",
     orgUrl: "https://uqstudio.vercel.app/",
-    period: "2026 - Present",
+    period: "2024 - Present",
     summary:
       "Designing and building web and mobile products for clients, including Scholaris (school management on web + Flutter), Assessly (AI-powered CBT platform), EcomWords Lab, and Al Baahith Academy.",
     tags: ["Next.js", "React", "TypeScript", "Flutter", "UI/UX"],
@@ -783,10 +777,10 @@ export const projects: readonly Project[] = [
   },
 ];
 
-/** Platform groups, in render order, for Featured Work and Projects. */
+/** Platform tabs, in order (the first is selected by default), for Featured Work and Projects. */
 export const platforms: readonly PlatformMeta[] = [
-  { key: "mobile", label: "// mobile" },
-  { key: "web", label: "// web" },
+  { key: "mobile", label: "mobile" },
+  { key: "web", label: "web" },
 ];
 
 /** Featured highlights (mobile: Nahdi, White Noise, Teesas · web: Scholaris, Assessly). */
@@ -802,21 +796,21 @@ export const skills: readonly SkillGroup[] = [
   {
     label: "Languages",
     items: [
-      { name: "Dart", note: "4y+" },
+      { name: "Dart" },
       { name: "TypeScript" },
       { name: "JavaScript" },
-      { name: "Java", note: "2y" },
-      { name: "Kotlin", note: "<1y" },
-      { name: "Rust", note: "<1y" },
+      { name: "Java" },
+      { name: "Kotlin" },
+      { name: "Rust" },
       { name: "C / C++" },
     ],
   },
   {
     label: "Mobile & Flutter",
     items: [
-      { name: "Flutter", note: "4y+" },
-      { name: "Android Studio", note: "5y+" },
-      { name: "Rust FFI", note: "<1y" },
+      { name: "Flutter" },
+      { name: "Android Studio" },
+      { name: "Rust FFI" },
       { name: "Responsive / multi form-factor" },
       { name: "Offline-first" },
       { name: "Localisation" },
@@ -840,8 +834,8 @@ export const skills: readonly SkillGroup[] = [
   {
     label: "State & Architecture",
     items: [
-      { name: "Stacked", note: "2y" },
-      { name: "Riverpod", note: "2y+" },
+      { name: "Stacked" },
+      { name: "Riverpod" },
       { name: "MVVM" },
       { name: "Clean Architecture" },
     ],
@@ -849,13 +843,13 @@ export const skills: readonly SkillGroup[] = [
   {
     label: "Backend & Services",
     items: [
-      { name: "Firebase", note: "2y+" },
-      { name: "Supabase", note: "1y" },
-      { name: "Contentful CMS", note: "1y" },
-      { name: "Algolia", note: "1y" },
+      { name: "Firebase" },
+      { name: "Supabase" },
+      { name: "Contentful CMS" },
+      { name: "Algolia" },
       { name: "Dynamic Yield" },
       { name: "BazaarVoice" },
-      { name: "SQLite", note: "2y" },
+      { name: "SQLite" },
       { name: "Hive" },
       { name: "Push Notifications (FCM)" },
     ],
@@ -863,10 +857,10 @@ export const skills: readonly SkillGroup[] = [
   {
     label: "Tooling & Platforms",
     items: [
-      { name: "Git", note: "4y+" },
-      { name: "VS Code", note: "5y+" },
-      { name: "PlayStore", note: "3y+" },
-      { name: "AppStore", note: "1y" },
+      { name: "Git" },
+      { name: "VS Code" },
+      { name: "PlayStore" },
+      { name: "AppStore" },
       { name: "Vercel" },
       { name: "Codemagic" },
       { name: "Performance Profiling" },
@@ -875,8 +869,8 @@ export const skills: readonly SkillGroup[] = [
   {
     label: "Protocols & Freedom Tech",
     items: [
-      { name: "NOSTR", note: "<1y" },
-      { name: "Marmot", note: "<1y" },
+      { name: "NOSTR" },
+      { name: "Marmot" },
     ],
   },
 ];
@@ -997,7 +991,7 @@ export const sections = {
     nav: true,
     title: "Skills",
     prompt: "~/skills --list",
-    intro: "The toolbox, mobile and web. Years attached where they earn the bragging rights.",
+    intro: "The toolbox, mobile and web. Grouped by where it gets used.",
   },
   community: {
     index: "06",
